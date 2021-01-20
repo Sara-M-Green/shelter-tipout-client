@@ -1,0 +1,41 @@
+#nav {
+    width: 100%;
+    float: left;
+    margin: 0 0 3em 0;
+    padding: 0;
+    list-style: none;
+    background-color: lightgray;
+}
+
+#nav li {
+    float: right;
+}
+
+#nav li:first-child {
+    float: left;
+}
+
+#nav li:nth-child(2) {
+    float: left;
+    margin-top: 18px;
+    margin-left: 5px;
+    font-size: 1.5em;
+    /* font-weight: bold; */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#logo {
+    float: left;
+    max-width: 62px;
+    padding: 6px;
+}
+
+#nav li a {
+    display: block;
+    padding: 15px 15px;
+    text-decoration: none;
+    font-weight: bold;
+    color: #069;
+    font-size: 1.5em;
+    border-right: 1px solid #ccc; 
+}
