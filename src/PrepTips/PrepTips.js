@@ -10,12 +10,6 @@ class PrepTips extends Component {
         }
     }
 
-    updateCocktailSales = (event) => {
-        this.setState({
-            cocktailSales: event.target.value
-        })
-    }
-
     updatePrepTips = (event) => {
         this.setState({
             prepTips: event.target.value
@@ -25,15 +19,17 @@ class PrepTips extends Component {
 
     calculatePrepTips = (event) => {
         event.preventDefault()
-        let tips = parseFloat(this.state.cocktailSales * 0.015).toFixed(2)
+        let tips = (Number(event.target.value) * 0.015).toFixed(2)
+
         this.setState({
+            cocktailSales: Number(event.target.value),
             prepTips: tips
         })
     }
 
     render() {
         return (
-            <div className="boh-tips">
+            <div className="prep-tips">
                 <h2>Prep Tips</h2>
                 <div>
                     <label htmlFor="cocktail-sales">Enter total cocktail sales: $</label>
@@ -45,7 +41,7 @@ class PrepTips extends Component {
                         min="0.00" 
                         placeholder="0.00" 
                         value={this.state.cocktailSales}
-                        onChange={this.updateCocktailSales}
+                        onChange={this.calculatePrepTips}
                     />    
                 </div>
                 <div>
@@ -63,7 +59,10 @@ class PrepTips extends Component {
                 </div>
         
                 
-                <button onClick={this.calculatePrepTips}>Calculate</button>
+                <div className="btns">
+                    <button>Next</button>
+                    <button>Skip</button>    
+                </div>
             </div>
         )
     }

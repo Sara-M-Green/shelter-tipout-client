@@ -19,8 +19,8 @@ class BohTips extends Component {
 
     calculateBohTips = (event) => {
         event.preventDefault()
-        let tips = Number(this.state.foodSales) * 0.03
-        console.log(tips)
+        const tips = (Number(event.target.value) * 0.03).toFixed(2)
+        
         this.setState({
             foodSales: Number(event.target.value),
             bohTips: tips
@@ -58,8 +58,11 @@ class BohTips extends Component {
                     />    
                 </div>
         
+                <div className="btns">
+                    <button>Next</button>
+                    <button>Skip</button>    
+                </div>
                 
-                {/* <button onClick={this.calculateBohTips}>Calculate</button> */}
             </div>
         )
     }
