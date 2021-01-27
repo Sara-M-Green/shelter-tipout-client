@@ -101,7 +101,7 @@ class BusserTips extends Component {
                         type="number" 
                         name="busser-hourly-tips" 
                         id="busser-hourly-tips" 
-                        value={this.state.tipsPerHr}
+                        value={(this.state.totalTips/this.sumBusserHrs()).toFixed(2)}
                         readOnly
                     />    
                 </div>
