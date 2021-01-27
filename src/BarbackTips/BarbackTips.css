@@ -1,0 +1,31 @@
+input[type=number] {
+    width: 100px;
+    margin-left: 3px;
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+}
+
+.barback-tips {
+    border: 2px solid black;
+    width: 50%;
+    margin: auto;
+    border-radius: 10px;
+    background-color: white;;
+    margin: 15px auto;
+}
+
+.btns button {
+    display: inline;
+    margin: 6px 3px;
+}
+
+#barback-name-1 {
+    margin-right: 6px;
+}
+
+#barback-tips {
+    margin-right: 6px;
+}

@@ -3,6 +3,8 @@ import TotalCcTips from '../TotalCcTips/TotalCcTips'
 import BohTips from '../BohTips/BohTips'
 import PrepTips from '../PrepTips/PrepTips'
 import BusserTips from '../BusserTips/BusserTips'
+import BarbackTips from '../BarbackTips/BarbackTips'
+import BartenderTips from '../BartenderTips/BartenderTips'
 import './CalculatorForm.css'
 
 class CalculatorForm extends Component {
@@ -15,6 +17,8 @@ class CalculatorForm extends Component {
                     <BohTips />
                     <PrepTips />
                     <BusserTips />
+                    <BarbackTips />
+                    <BartenderTips />
                 </form>
             </div>
         )

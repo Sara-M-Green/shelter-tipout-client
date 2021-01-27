@@ -2,6 +2,19 @@ import React, { Component } from 'react'
 import './TotalCcTips.css'
 
 class TotalCcTips extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            totalCcTips: ""
+        }
+    }
+
+    updateTotalCcTips = (event) => {
+        this.setState({
+            totalCcTips: Number(event.target.value)
+        })
+    }
+
     render() {
         return (
             <div className="total-cc-tips">
@@ -10,10 +23,12 @@ class TotalCcTips extends Component {
                 <input 
                     type="number"
                     name="total-cc-tips" 
-                    id="total-cc-tops"
+                    id="total-cc-tips"
                     step="0.01" 
                     min="0.00" 
-                    placeholder="0.00" 
+                    placeholder="0.00"
+                    value={this.state.totalCcTips}
+                    onChange={this.updateTotalCcTips} 
                 />
                 <button>Next</button>
             </div>

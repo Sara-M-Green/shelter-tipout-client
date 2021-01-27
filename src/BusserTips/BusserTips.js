@@ -5,26 +5,22 @@ class BusserTips extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            foodSales: "",
-            totalTips: "",
-            tipsPerHr: "",
+            foodSales: 0,
+            totalTips: 0,
+            tipsPerHr: 0,
             totalHrs: 0,
             busser1hrs: 0,
             busser2hrs: 0,
-            busser3hrs: 0
-
+            busser3hrs: 0,
+            busser1Tips: 0,
+            busser2Tips: 0,
+            busser3Tips: 0,
         }
     }
 
     updateTotalTips = (event) => {
         this.setState({
-            totalTips: Number(event.target.value)
-        })
-    }
-
-    updateTotalHrs = (event) => {
-        this.setState({
-            totalHrs:  Number(event.target.value)
+            totalTips: event.target.value
         })
     }
 
@@ -34,24 +30,18 @@ class BusserTips extends Component {
         })
     }
 
-    updateBusser1Hrs = (event) => {
+
+    // updateTotalHrs = (event) => {
+    //     this.setState({
+    //         totalHrs: parseFloat(this.state.busser1hrs) + parseFloat(this.state.busser2hrs) + parseFloat(this.state.busser3hrs)
+    //     })
+    // }
+
+    updateBusserHrs = (event) => {
         this.setState({
-            busser1hrs: Number(event.target.value)
+        [event.target.name]: parseFloat(event.target.value),
         })
     }
-
-    updateBusser2Hrs = (event) => {
-        this.setState({
-            busser2hrs: Number(event.target.value)
-        })
-    }
-
-    updateBusser3Hrs = (event) => {
-        this.setState({
-            busser3hrs: Number(event.target.value)
-        })
-    }
-
 
     calculateTotalTips = (event) =>{
         event.preventDefault()
@@ -59,18 +49,12 @@ class BusserTips extends Component {
 
         this.setState({
             foodSales: Number(event.target.value),
-            totalTips: totalTips
+            totalTips: Number(totalTips)
         })
     }
 
-    calculateTotalHrs = (event) => {
-        event.preventDefault()
-        const totalHrs = Number(parseFloat(this.state.busser1hrs) + parseFloat(this.state.busser2hrs) + parseFloat(this.state.busser3hrs))
-
-        this.setState({
-            [event.target.name]: event.target.value,
-            totalHrs: totalHrs
-        })
+    sumBusserHrs = () => {
+        return this.state.busser1hrs + this.state.busser2hrs + this.state.busser3hrs
     }
 
     render() {
@@ -106,19 +90,19 @@ class BusserTips extends Component {
                         type="number" 
                         name="total-busser-hrs" 
                         id="total-busser-hrs"
-                        value={this.state.totalHrs}
-                        onChange={this.updateTotalHrs} 
+                        value={this.sumBusserHrs()}
+                        readOnly
                     />    
                 </div>
                 <div>
-                    <label htmlFor="busser-hourly-tips">Buser Tips Per Hour:</label>
+                    <label htmlFor="busser-hourly-tips">Busser Tips Per Hour:</label>
                     <input 
                         placeholder="0.00" 
                         type="number" 
                         name="busser-hourly-tips" 
                         id="busser-hourly-tips" 
                         value={this.state.tipsPerHr}
-                        onChange={this.updateTipsPerHr}
+                        readOnly
                     />    
                 </div>
                 <div>
@@ -130,23 +114,23 @@ class BusserTips extends Component {
                         <option value="Fernanda">Fernanda</option>
                     </select>
 
-                    <label htmlFor="busser-hours-1">Hours: </label>
+                    <label htmlFor="busser1hrs">Hours: </label>
                     <input 
                         type="number" 
                         placeholder="0" 
-                        htmlFor="busser-hours-1" 
                         id="busser-hours-1"
                         name="busser1hrs"
                         value={this.state.busser1hrs}
-                        onChange={this.calculateTotalHrs}
+                        onChange={this.updateBusserHrs}
                     />
 
-                    <label htmlFor="busser-tips-1">Tips: </label>
+                    <label htmlFor="busser1Tips">Tips: </label>
                     <input 
                         type="number" 
                         placeholder="0.00" 
-                        htmlFor="busser-tips-1" 
-                        id="busser-tips-1"
+                        htmlFor="busser1Tips" 
+                        id="busser1Tips"
+                        name="busser1Tips"
                     />
                 </div>
                 <div>
@@ -158,7 +142,7 @@ class BusserTips extends Component {
                         <option value="Fernanda">Fernanda</option>
                     </select>
 
-                    <label htmlFor="busser-hours-2">Hours: </label>
+                    <label htmlFor="busser2hrs">Hours: </label>
                     <input 
                         type="number" 
                         placeholder="0" 
@@ -166,7 +150,7 @@ class BusserTips extends Component {
                         id="busser-hours-2"
                         name="busser2hrs"
                         value={this.state.busser2hrs}
-                        onChange={this.calculateTotalHrs}
+                        onChange={this.updateBusserHrs}
                     />
 
                     <label htmlFor="busser-tips-2">Tips: </label>
@@ -181,7 +165,7 @@ class BusserTips extends Component {
                         <option value="Fernanda">Fernanda</option>
                     </select>
 
-                    <label htmlFor="busser-hours-3">Hours: </label>
+                    <label htmlFor="busser3hrs">Hours: </label>
                     <input 
                         type="number" 
                         placeholder="0" 
@@ -189,7 +173,7 @@ class BusserTips extends Component {
                         id="busser-hours-3"
                         name="busser3hrs"
                         value={this.state.busser3hrs}
-                        onChange={this.calculateTotalHrs} 
+                        onChange={this.updateBusserHrs} 
                     />
 
                     <label htmlFor="busser-tips-3">Tips: </label>
