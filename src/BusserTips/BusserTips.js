@@ -43,6 +43,14 @@ class BusserTips extends Component {
         })
     }
 
+    updateBusserTips = (event) => {
+        alert('update busser tips')
+        console.log(event.target.name)
+        this.setState({
+            [event.target.name]: parseFloat(event.target.value)
+        })
+    }
+
     calculateTotalTips = (event) =>{
         event.preventDefault()
         const totalTips = (Number(event.target.value) * 0.05).toFixed(2)
@@ -131,6 +139,8 @@ class BusserTips extends Component {
                         htmlFor="busser1Tips" 
                         id="busser1Tips"
                         name="busser1Tips"
+                        value={(this.state.busser1hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)}
+                        onChange={this.updateBusserTips}
                     />
                 </div>
                 <div>
@@ -153,8 +163,15 @@ class BusserTips extends Component {
                         onChange={this.updateBusserHrs}
                     />
 
-                    <label htmlFor="busser-tips-2">Tips: </label>
-                    <input type="number" placeholder="0.00" htmlFor="busser-tips-2" id="busser-tips-2" />
+                    <label htmlFor="busser2Tips">Tips: </label>
+                    <input 
+                        type="number" 
+                        placeholder="0.00" 
+                        name="busser2Tips" 
+                        id="busser2Tips"
+                        value={(this.state.busser2hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)}
+                        onChange={this.updateBusserTips}
+                    />
                 </div>
                 <div>
                     <label htmlFor="busser-name-3">Busser: </label>
@@ -173,11 +190,18 @@ class BusserTips extends Component {
                         id="busser-hours-3"
                         name="busser3hrs"
                         value={this.state.busser3hrs}
-                        onChange={this.updateBusserHrs} 
+                        onChange={this.updateBusserHrs}
                     />
 
-                    <label htmlFor="busser-tips-3">Tips: </label>
-                    <input type="number" placeholder="0.00" htmlFor="busser-tips-3" id="busser-tips-3" />
+                    <label htmlFor="busser3Tips">Tips: </label>
+                    <input 
+                        type="number" 
+                        placeholder="0.00" 
+                        name="busser3Tips" 
+                        id="busser3Tips" 
+                        value={(this.state.busser3hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)}
+                        onChange={this.updateBusserTips}
+                    />
                 </div>
                 <div className="btns">
                     <button>Next</button>

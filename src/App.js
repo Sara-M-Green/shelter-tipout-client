@@ -1,24 +1,24 @@
 import React, { Component } from 'react'
 import { Route, Link } from 'react-router-dom'
 import Navbar from './Navbar/Navbar'
+import Homepage from './Homepage/Homepage'
 import CalculatorForm from './CalculatorForm/CalculatorForm'
 import './App.css'
+
 
 class App extends Component {
   render() {
     return (
       <main className="App">
-        <Navbar />
-        <Link to={"/calculator"}>
-          <button>Start Tip Out</button>
-        </Link>
-  
+        <Navbar />  
         <Route 
-          path="/calculator" component={CalculatorForm} 
+          path="/calculator" 
+          component={CalculatorForm} 
         />
         <Route 
           exact 
           path="/" 
+          component={Homepage}
         />
       </main>
     )
