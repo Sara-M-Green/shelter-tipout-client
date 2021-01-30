@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Bussers from '../Bussers/Bussers'
 import './BusserTips.css'
 
 class BusserTips extends Component {
@@ -41,11 +42,11 @@ class BusserTips extends Component {
         this.setState({
         [event.target.name]: parseFloat(event.target.value),
         })
+        this.updateBusserTips(event)
     }
 
     updateBusserTips = (event) => {
-        alert('update busser tips')
-        console.log(event.target.name)
+        (this.state.busser1hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)
         this.setState({
             [event.target.name]: parseFloat(event.target.value)
         })
@@ -66,6 +67,8 @@ class BusserTips extends Component {
     }
 
     render() {
+
+
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
@@ -113,7 +116,15 @@ class BusserTips extends Component {
                         readOnly
                     />    
                 </div>
-                <div>
+                <Bussers 
+                    busserhrs={this.state.busser1hrs}
+                    updateBusserHrs={this.updateBusserHrs}
+                />
+                <Bussers 
+                    busserhrs={this.state.busser2hrs}
+                    updateBusserHrs={this.updateBusserHrs}
+                />
+                {/* <div>
                     <label htmlFor="busser-name-1">Busser: </label>
                     <select name="busser-name-1" id="busser-name-1">
                         <option value="">Busser Name:</option>
@@ -202,7 +213,7 @@ class BusserTips extends Component {
                         value={(this.state.busser3hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)}
                         onChange={this.updateBusserTips}
                     />
-                </div>
+                </div> */}
                 <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>
