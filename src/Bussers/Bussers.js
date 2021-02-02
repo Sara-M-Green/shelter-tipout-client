@@ -4,36 +4,36 @@ import './Bussers.css'
 class Bussers extends Component {
     render() {
         return (
-            <div>
-                <label htmlFor="busser-name-1">Busser: </label>
-                <select name="busser-name-1" id="busser-name-1">
+            <li>
+                <label htmlFor={"busserName" + this.props.id}>Busser: </label>
+                <select 
+                    name={"busserName" + this.props.id}
+                    onChange={(event) => this.props.onUpdateName(this.props.busser, event.target.value)}
+                >
                     <option value="">Busser Name:</option>
                     <option value="Jesus">Jesus</option>
                     <option value="Estefania">Estefania</option>
                     <option value="Fernanda">Fernanda</option>
                 </select>
 
-                <label htmlFor="busser1hrs">Hours: </label>
+                <label htmlFor={"busserHours" + this.props.id}>Hours: </label>
                 <input 
                     type="number" 
                     placeholder="0" 
-                    id="busser-hours-1"
-                    name="busser1hrs"
-                    value={this.props.busserhrs}
-                    onChange={this.props.updateBusserHrs}
+                    name={"busserHours" + this.props.id}
+                    value={this.props.busser.busserHours}
+                    onChange={(event) => this.props.onUpdateHours(this.props.busser, Number(event.target.value))}
                 />
 
-                <label htmlFor="busser1Tips">Tips: </label>
+                <label htmlFor={"busserTips" + this.props.id}>Tips: </label>
                 <input 
                     type="number" 
                     placeholder="0.00" 
-                    htmlFor="busser1Tips" 
-                    id="busser1Tips"
-                    name="busser1Tips"
-                    // value={(this.state.busser1hrs * (this.state.totalTips/this.sumBusserHrs())).toFixed(2)}
+                    name={"busserTips" + this.props.id}
+                    // value={0}
                     // onChange={this.updateBusserTips}
                 />
-            </div>
+            </li>
         )
     }
 }
