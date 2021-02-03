@@ -23,7 +23,7 @@ class PrepTips extends Component {
 
         this.setState({
             cocktailSales: Number(event.target.value),
-            prepTips: tips
+            prepTips: Number(tips)
         })
     }
 

@@ -23,7 +23,7 @@ class BarbackTips extends Component {
         
         this.setState({
             sales: Number(event.target.value),
-            barbackTips: tips
+            barbackTips: Number(tips)
         })
     }
 

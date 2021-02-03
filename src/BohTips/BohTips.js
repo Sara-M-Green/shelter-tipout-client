@@ -6,7 +6,7 @@ class BohTips extends Component {
         super(props);
         this.state = {
             foodSales: "",
-            bohTips: "",
+            bohTips: 0,
         }
     }
 
@@ -23,7 +23,7 @@ class BohTips extends Component {
         
         this.setState({
             foodSales: Number(event.target.value),
-            bohTips: tips
+            bohTips: Number(tips)
         })
     }
 

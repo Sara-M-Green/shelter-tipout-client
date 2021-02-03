@@ -8,7 +8,7 @@ class TotalCcTips extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            totalCcTips: ""
+            totalCcTips: 0
         }
     }
 
@@ -16,7 +16,6 @@ class TotalCcTips extends Component {
         this.setState({
             totalCcTips: Number(event.target.value)
         })
-        console.log(this.state.totalCcTips)
     }
 
     render() {

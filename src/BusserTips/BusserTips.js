@@ -52,7 +52,6 @@ class BusserTips extends Component {
         this.setState({
             bussers: updatedBussers
         })
-        console.log(this.state)
     }
     
 
@@ -87,12 +86,16 @@ class BusserTips extends Component {
             return a + b
         }, 0)
 
-        return sumOfHours
+        this.setState({
+            totalHrs: sumOfHours
+        })
+
+        console.log(this.state.totalHrs)
     }
 
     calculateTipsPerHour() {
 
-        const tipsPerHour = (this.state.totalTips/this.sumBusserHrs()).toFixed(2)
+        const tipsPerHour = (this.state.totalTips/this.state.totalHrs).toFixed(2)
         return tipsPerHour
     }
 
@@ -131,8 +134,8 @@ class BusserTips extends Component {
                         type="number" 
                         name="total-busser-hrs" 
                         id="total-busser-hrs"
-                        value={this.sumBusserHrs()}
-                        readOnly
+                        value={this.state.totalHrs}
+                        onChange={() => this.sumBusserHrs()}
                     />    
                 </div>
                 <div>
