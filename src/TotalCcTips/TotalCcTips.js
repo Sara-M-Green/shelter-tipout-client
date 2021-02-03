@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import TipContext from '../TipContext/TipContext'
 import './TotalCcTips.css'
+
+console.log(TipContext)
 
 class TotalCcTips extends Component {
     constructor(props) {
@@ -13,6 +16,7 @@ class TotalCcTips extends Component {
         this.setState({
             totalCcTips: Number(event.target.value)
         })
+        console.log(this.state.totalCcTips)
     }
 
     render() {

@@ -31,7 +31,7 @@ class Bussers extends Component {
                     placeholder="0.00" 
                     name={"busserTips" + this.props.id}
                     value={(this.props.onUpdateTips * this.props.busser.busserHours).toFixed(2)}
-                    readOnly
+                    onChange={() => alert("hi")}
                 />
             </li>
         )
