@@ -1,26 +1,21 @@
 import React, { Component } from 'react'
+import Bartender from '../Bartender/Bartender'
 import './BartenderTips.css'
 
 class BartenderTips extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            totalTipOut: "",
-            tipsRemaining: "",
+            totalTipOut: 0,
+            tipsRemaining: 0,
             tipsPerHr: "",
-            totalHrs: "",
-            bartender1hrs: "",
-            bartender2hrs: "",
-            bartender3hrs: "",
-            bartender4hrs: "",
-            bartender1tips: "",
-            bartender2tips: "",
-            bartender3tips: "",
-            bartender4tips: "",
-            bartender1bottles: "",
-            bartender2bottles: "",
-            bartender3bottles: "",
-            bartender4bottles: "",
+            totalHrs: 0,
+            bartenders: [
+                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
+                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
+                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
+                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
+            ]
         }
     }
 
@@ -65,103 +60,20 @@ class BartenderTips extends Component {
                     />
                 </div>
                 <div>
-                    <label htmlFor="bartender-name-1">Bartender: </label>
-                    <select name="bartender-name-1" id="bartender-name-1" form="bartender-tips">
-                        <option value="">Bartender Name:</option>
-                        <option value="Tucker">Tucker</option>
-                        <option value="Sara">Sara</option>
-                        <option value="Steph">Steph</option>
-                    </select>
-
-                    <label htmlFor="bartender-hours-1">Hours: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        id="bartender-hours-1"
-                        name="bartender-hours-2"
-                    />
-
-                    <label htmlFor="bartender-tips-1">Tips: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0.00" 
-                        id="bartender-tips-1"
-                        name="bartender-tips-1"
-                    />
-
-                    <label htmlFor="bartender-bottles-1">Bottles Sold: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        name="bartender-bottles-1" 
-                        id="bartender-bottles-1"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="bartender-name-2">Bartender: </label>
-                    <select name="bartender-name-2" id="bartender-name-2" form="bartender-tips">
-                        <option value="">Bartender Name:</option>
-                        <option value="Tucker">Tucker</option>
-                        <option value="Sara">Sara</option>
-                        <option value="Steph">Steph</option>
-                    </select>
-
-                    <label htmlFor="bartender-hours-2">Hours: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        id="bartender-hours-2"
-                        name="bartender-hours-2"
-                    />
-
-                    <label htmlFor="bartender-tips-2">Tips: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0.00"
-                        id="bartender-tips-2"
-                        name="bartender-tips-2"
-                    />
-
-                    <label htmlFor="bartender-bottles-2">Bottles Sold: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        name="bartender-bottles-2" 
-                        id="bartender-bottles-2"
-                    />
-                </div>
-                <div>
-                    <label htmlFor="bartender-name-3">Bartender: </label>
-                    <select name="bartender-name-3" id="bartender-name-3" form="bartender-tips">
-                        <option value="">Bartender Name:</option>
-                        <option value="Tucker">Tucker</option>
-                        <option value="Sara">Sara</option>
-                        <option value="Steph">Steph</option>
-                    </select>
-
-                    <label htmlFor="bartender-hours-3">Hours: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        name="bartender-hours-3" 
-                        id="bartender-hours-3"
-                    />
-
-                    <label htmlFor="bartender-tips-3">Tips: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0.00" 
-                        name="bartender-tips-3" 
-                        id="bartender-tips-3"
-                    />
-
-                    <label htmlFor="bartender-bottles-3">Bottles Sold: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        name="bartender-bottles-3" 
-                        id="bartender-bottles-3"
-                    />
+                    <section>
+                        <ul>
+                            {this.state.bartenders.map((bartender, i) =>
+                                <Bartender
+                                    key={i}
+                                    id={i}
+                                    bartender={bartender}
+                                />
+                            )}
+                            
+                            
+                        </ul>
+                    </section>
+                    
                 </div>
                 <div className="btns">
                     <button>Next</button>
