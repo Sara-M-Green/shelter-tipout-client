@@ -22,7 +22,10 @@ class Bussers extends Component {
                     placeholder="0" 
                     name={"busserHours" + this.props.id}
                     value={this.props.busser.busserHours}
-                    onChange={(event) => this.props.onUpdateHours(this.props.busser, Number(event.target.value))}
+                    onChange={(event) => {
+                        this.props.onUpdateHours(this.props.busser, Number(event.target.value))
+                        // this.props.onUpdateTips(this.props.busser, Number(event.target.value))
+                    }}
                 />
 
                 <label htmlFor={"busserTips" + this.props.id}>Tips: </label>
@@ -30,12 +33,14 @@ class Bussers extends Component {
                     type="number" 
                     placeholder="0.00" 
                     name={"busserTips" + this.props.id}
-                    value={(this.props.onUpdateTips * this.props.busser.busserHours).toFixed(2)}
-                    onChange={() => alert("hi")}
+                    value={this.props.busser.busserTips}
+                    readOnly
                 />
             </li>
         )
     }
 }
+
+// (this.props.onUpdateTips * this.props.busser.busserHours).toFixed(2)
 
 export default Bussers

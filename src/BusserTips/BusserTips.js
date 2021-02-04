@@ -49,24 +49,54 @@ class BusserTips extends Component {
             return b
         
         })
-        this.setState({
-            bussers: updatedBussers
+        this.setState({bussers: updatedBussers}, () => {
+            this.sumBusserHrs(busser)
         })
     }
-    
 
-    updateBusserTips = (busser, newTips) => {
-        const updatedTips = this.state.bussers.map(b => {
-            if (b === busser) {
-                b.busserTips = newTips
-            }
-            return b
-        })
-        this.setState({
-            bussers: updatedTips
-        })
+    sumBusserHrs = (busser) => {
+        const hoursArray = this.state.bussers.map(b => (
+            b.busserHours
+        ))
+        const sumOfHours = hoursArray.reduce(function(a, b) {
+            return parseInt(a) + parseInt (b)
+        }, 0)
 
+        this.setState({totalHrs: sumOfHours}, () => {
+            this.calculateTipsPerHour(busser)
+        })   
     }
+
+    calculateTipsPerHour = (busser) => {
+        if (this.state.totalHrs === 0) {
+            return
+        }
+        const tipsPerHour = (this.state.totalTips/this.state.totalHrs).toFixed(2)
+        this.setState({tipsPerHr: Number(tipsPerHour)}, () => {
+            this.updateBusserTips(busser)
+        }) 
+    }
+
+    updateBusserTips = () => {
+        this.state.bussers.map(b => {
+            b.busserTips = b.busserHours * this.state.tipsPerHr
+        })
+        this.setState({})
+    }
+
+    // updateBusserTips = (busser) => {
+    //     const newTips = busser.busserHours * this.state.tipsPerHr
+    //     console.log(busser.busserHours, this.state.tipsPerHr)
+    //     const updatedTips = this.state.bussers.map(b => {
+    //         if (b === busser) {
+    //             b.busserTips = newTips
+    //         }
+    //         return b
+    //     })
+    //     this.setState({
+    //         bussers: updatedTips, 
+    //     })
+    // }
 
     calculateTotalTips = (event) =>{
         event.preventDefault()
@@ -78,30 +108,11 @@ class BusserTips extends Component {
         })
     }
 
-    sumBusserHrs() {
-        const hoursArray = this.state.bussers.map(b => (
-            b.busserHours
-        ))
-        const sumOfHours = hoursArray.reduce(function(a, b) {
-            return a + b
-        }, 0)
+    
 
-        this.setState({
-            totalHrs: sumOfHours
-        })
-
-        console.log(this.state.totalHrs)
-    }
-
-    calculateTipsPerHour() {
-
-        const tipsPerHour = (this.state.totalTips/this.state.totalHrs).toFixed(2)
-        return tipsPerHour
-    }
+    
 
     render() {
-
-
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
@@ -145,7 +156,7 @@ class BusserTips extends Component {
                         type="number" 
                         name="busser-hourly-tips" 
                         id="busser-hourly-tips" 
-                        value={this.calculateTipsPerHour()}
+                        value={this.state.tipsPerHr}
                         readOnly
                     />    
                 </div>
@@ -158,8 +169,11 @@ class BusserTips extends Component {
                                     id={i}
                                     busser={busser}
                                     onUpdateHours={this.updateBusserHrs} 
+                                    sumBusserHrs={this.sumBusserHrs}
                                     onUpdateName={this.updateBusserName}
-                                    onUpdateTips={this.calculateTipsPerHour()}
+                                    onCaclulateHourlyTips={this.calculateTipsPerHour}
+                                    onUpdateTips={this.updateBusserTips}
+
                                 />
                             )}
                         </ul>
