@@ -6,16 +6,8 @@ class PrepTips extends Component {
         super(props);
         this.state = {
             cocktailSales: "",
-            prepTips: "",
         }
     }
-
-    updatePrepTips = (event) => {
-        this.setState({
-            prepTips: event.target.value
-        })
-    }
-
 
     calculatePrepTips = (event) => {
         event.preventDefault()
@@ -23,8 +15,9 @@ class PrepTips extends Component {
 
         this.setState({
             cocktailSales: Number(event.target.value),
-            prepTips: Number(tips)
         })
+
+        this.props.onUpdateState(tips, "prepTips")
     }
 
     render() {
@@ -53,8 +46,8 @@ class PrepTips extends Component {
                         step="0.01" 
                         min="0.00" 
                         placeholder="0.00"
-                        value={this.state.prepTips} 
-                        onChange={this.updatePrepTips}
+                        value={this.props.prepTips} 
+                        readOnly
                     />    
                 </div>
         

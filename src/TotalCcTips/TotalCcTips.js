@@ -5,18 +5,18 @@ import './TotalCcTips.css'
 console.log(TipContext)
 
 class TotalCcTips extends Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            totalCcTips: 0
-        }
-    }
+    // constructor(props) {
+    //     super(props)
+    //     this.state = {
+    //         totalCcTips: 0
+    //     }
+    // }
 
-    updateTotalCcTips = (event) => {
-        this.setState({
-            totalCcTips: Number(event.target.value)
-        })
-    }
+    // updateTotalCcTips = (event) => {
+    //     this.setState({
+    //         totalCcTips: Number(event.target.value)
+    //     })
+    // }
 
     render() {
         return (
@@ -30,8 +30,8 @@ class TotalCcTips extends Component {
                     step="0.01" 
                     min="0.00" 
                     placeholder="0.00"
-                    value={this.state.totalCcTips}
-                    onChange={this.updateTotalCcTips} 
+                    value={this.props.totalCcTips}
+                    onChange={(event) => this.props.onUpdateState(event.target.value, "totalCcTips")} 
                 />
                 <button>Next</button>
             </div>

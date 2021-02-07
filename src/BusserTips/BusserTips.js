@@ -18,9 +18,13 @@ class BusserTips extends Component {
     }
 
     updateTotalTips = (event) => {
+        let newTotalTips = Number(event.target.value)
         this.setState({
-            totalTips: Number(event.target.value)
+            totalTips: newTotalTips
         })
+
+        this.props.onUpdateState(newTotalTips, "busserTips")
+    
     }
 
     updateTipsPerHr = (event) => {
@@ -80,23 +84,11 @@ class BusserTips extends Component {
     updateBusserTips = () => {
         this.state.bussers.map(b => {
             b.busserTips = b.busserHours * this.state.tipsPerHr
+            return b
         })
         this.setState({})
     }
 
-    // updateBusserTips = (busser) => {
-    //     const newTips = busser.busserHours * this.state.tipsPerHr
-    //     console.log(busser.busserHours, this.state.tipsPerHr)
-    //     const updatedTips = this.state.bussers.map(b => {
-    //         if (b === busser) {
-    //             b.busserTips = newTips
-    //         }
-    //         return b
-    //     })
-    //     this.setState({
-    //         bussers: updatedTips, 
-    //     })
-    // }
 
     calculateTotalTips = (event) =>{
         event.preventDefault()
@@ -106,16 +98,14 @@ class BusserTips extends Component {
             foodSales: Number(event.target.value),
             totalTips: Number(totalTips)
         })
-    }
-
-    
-
-    
+    }   
 
     render() {
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
+                <p>Enter Total Food Sales</p> 
+                <p>Select the Busser's name, and enter how many hours they worked</p>
                 <div>
                     <label htmlFor="busser-food-sales">Total Food Sales During Busser Shift: $</label>
                     <input 

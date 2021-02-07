@@ -10,15 +10,15 @@ class BarbackTips extends Component {
         }
     }
 
-    // updateBarbackTips = (event) => {
-    //     this.setState({
-    //         barbackTips: event.target.value
-    //     })
-    // }
-
     updateBarbackName = (event) => {
         this.setState({
             barback: {name: event.target.value}
+        })
+    }
+
+    updateBarbackBottles = (event) => {
+        this.setState({
+            barback: {bottles: event}
         })
     }
 
@@ -74,7 +74,15 @@ class BarbackTips extends Component {
                         readOnly
                     />
                     <label htmlFor="barback-bottles-1">Bottles Sold: </label>
-                    <input type="number" placeholder="0" name="barback-bottles-1" id="barback-bottles-1"></input>   
+                    <input 
+                        type="number" 
+                        placeholder="0" 
+                        name="barback-bottles-1" 
+                        id="barback-bottles-1"
+                        value={this.state.barback.bottles}
+                        onChange={this.updateBarbackBottles}>
+                        
+                    </input>   
                 </div>
         
                 <div className="btns">

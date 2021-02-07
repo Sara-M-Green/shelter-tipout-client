@@ -6,16 +6,8 @@ class BohTips extends Component {
         super(props);
         this.state = {
             foodSales: "",
-            bohTips: 0,
         }
     }
-
-    updateBohTips = (event) => {
-        this.setState({
-            bohTips: event.target.value
-        })
-    }
-
 
     calculateBohTips = (event) => {
         event.preventDefault()
@@ -23,8 +15,9 @@ class BohTips extends Component {
         
         this.setState({
             foodSales: Number(event.target.value),
-            bohTips: Number(tips)
         })
+
+        this.props.onUpdateState(tips, "bohTips")
     }
 
     render() {
@@ -53,8 +46,8 @@ class BohTips extends Component {
                         step="0.01" 
                         min="0.00" 
                         placeholder="0.00"
-                        value={this.state.bohTips}
-                        onChange={this.updateBohTips} 
+                        value={this.props.bohTips}
+                        readOnly 
                     />    
                 </div>
         

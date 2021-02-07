@@ -24,7 +24,6 @@ class Bussers extends Component {
                     value={this.props.busser.busserHours}
                     onChange={(event) => {
                         this.props.onUpdateHours(this.props.busser, Number(event.target.value))
-                        // this.props.onUpdateTips(this.props.busser, Number(event.target.value))
                     }}
                 />
 
