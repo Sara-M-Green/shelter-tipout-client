@@ -11,6 +11,7 @@ class CalculatorForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            currentDateTime: Date().toLocaleString(),
             totalCcTips: 0,
             bohTips: 0,
             prepTips: 0,
@@ -31,7 +32,9 @@ class CalculatorForm extends Component {
     }
 
     calculateTipsRemaining = () => {
-        const tipsRemaining = this.state.TotalCcTips - this.state.totalTipOut
+        console.log(this.state.totalCcTips, this.state.tipsRemaining, this.state.totalTipOut)
+
+        const tipsRemaining = Number(this.state.TotalCcTips - this.state.totalTipOut) || 0
         this.setState({
             tipsRemaining: tipsRemaining
         })
@@ -50,6 +53,7 @@ class CalculatorForm extends Component {
         return (
             <div>
                 <h1>Tip Out Calculator</h1>
+                <p>{this.state.currentDateTime}</p>
                 <form>
                     <TotalCcTips
                         totalCcTips={this.state.totalCcTips}

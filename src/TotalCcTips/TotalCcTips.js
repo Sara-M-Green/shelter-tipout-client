@@ -5,18 +5,6 @@ import './TotalCcTips.css'
 console.log(TipContext)
 
 class TotalCcTips extends Component {
-    // constructor(props) {
-    //     super(props)
-    //     this.state = {
-    //         totalCcTips: 0
-    //     }
-    // }
-
-    // updateTotalCcTips = (event) => {
-    //     this.setState({
-    //         totalCcTips: Number(event.target.value)
-    //     })
-    // }
 
     render() {
         return (

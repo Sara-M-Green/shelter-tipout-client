@@ -30,7 +30,7 @@ class BartenderTips extends Component {
                         placeholder="0.00" 
                         name="total-tip-out" 
                         id="total-tip-out"
-                        value={(this.props.totalTipOut).toFixed(2)}
+                        value={this.props.totalTipOut}
                         readOnly
                     />
                 </div>
