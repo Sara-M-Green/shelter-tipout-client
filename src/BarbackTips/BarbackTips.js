@@ -1,35 +1,55 @@
 import React, { Component } from 'react'
+import Barbacks from '../Barbacks/Barbacks'
 import './BarbackTips.css'
 
 class BarbackTips extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sales: "",
-            barback: {name: "", tips: 0, bottles: 0}
+            barbacks: [
+                {name: "", sales: 0, tips: 0, bottles: 0},
+                {name: "", sales: 0, tips: 0, bottles: 0},
+
+            ]
         }
     }
 
-    updateBarbackName = (event) => {
+    updateBarbackName = (barback, name) => {
+        const barbackName = this.state.barbacks.map(b => {
+            if (b === barback) {
+                b.name = name
+            }
+            return b
+        })
         this.setState({
-            barback: {name: event.target.value}
+            barbacks: barbackName
         })
     }
 
-    updateBarbackBottles = (event) => {
+    updateBarbackBottles = (barback, bottles) => {
+        const barbackBottles = this.state.barbacks.map(b => {
+            if (b === barback) {
+                b.bottles = Number(bottles)
+            }
+            return b
+        })
         this.setState({
-            barback: {bottles: event}
+            barbacks: barbackBottles
         })
     }
 
 
-    calculateBarbackTips = (event) => {
-        event.preventDefault()
-        const tips = (Number(event.target.value) * 0.015).toFixed(2)
-        
+    calculateBarbackTips = (barback, sales) => {
+        const barbackSales = this.state.barbacks.map(b => {
+            if (b === barback) {
+                b.sales = Number(sales)
+                b.tips = Number((sales * 0.015).toFixed(2))
+            }
+            return b
+        })
+
         this.setState({
-            sales: Number(event.target.value),
-            barback: {tips: Number(tips)}
+            barbacks: barbackSales
         })
     }
 
@@ -37,52 +57,23 @@ class BarbackTips extends Component {
         return (
             <div className="barback-tips">
                 <h2>Barback Tips</h2>
+                
                 <div>
-                    <label htmlFor="sales">Enter total sales: $</label>
-                    <input 
-                        type="number"
-                        name="sales" 
-                        id="sales"
-                        step="0.01" 
-                        min="0.00" 
-                        placeholder="0.00" 
-                        value={this.state.sales}
-                        onChange={this.calculateBarbackTips}
-                    />    
-                </div>
-                <div>
-                    <label htmlFor="name">Barback: </label>
-                        <select 
-                            name="name" 
-                            id="barback-name" 
-                            onChange={this.updateBarbackName}
-                        >
-                            <option defaultValue="">Barback Name:</option>
-                            <option value="Cam">Cam</option>
-                            <option value="Maddy">Maddy</option>
-                            <option value="Jesus">Jesus</option>
-                        </select>
-                    <label htmlFor="barback-tips">Barback Tips (1.5%): $</label>                    
-                    <input 
-                        type="number"
-                        name="barback-tips" 
-                        id="barback-tips"
-                        step="0.01" 
-                        min="0.00" 
-                        placeholder="0.00"
-                        value={this.state.barback.tips}
-                        readOnly
-                    />
-                    <label htmlFor="barback-bottles-1">Bottles Sold: </label>
-                    <input 
-                        type="number" 
-                        placeholder="0" 
-                        name="barback-bottles-1" 
-                        id="barback-bottles-1"
-                        value={this.state.barback.bottles}
-                        onChange={this.updateBarbackBottles}>
-                        
-                    </input>   
+                    <section className="barback-instances">
+                        <ul>
+                            {this.state.barbacks.map((barback, i) => 
+                                <Barbacks 
+                                    key={i}
+                                    id={i}
+                                    barback={barback}
+                                    onCalculateBarbackTips={this.calculateBarbackTips}
+                                    onUpdateBarbackName={this.updateBarbackName}
+                                    onUpdateBarbackBottles={this.updateBarbackBottles}
+                                />
+                            )}
+                        </ul>
+                    </section>
+                    
                 </div>
         
                 <div className="btns">

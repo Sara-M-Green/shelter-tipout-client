@@ -40,6 +40,4 @@ class Bussers extends Component {
     }
 }
 
-// (this.props.onUpdateTips * this.props.busser.busserHours).toFixed(2)
-
 export default Bussers

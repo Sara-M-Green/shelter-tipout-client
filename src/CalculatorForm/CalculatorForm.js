@@ -6,17 +6,18 @@ import BusserTips from '../BusserTips/BusserTips'
 import BarbackTips from '../BarbackTips/BarbackTips'
 import BartenderTips from '../BartenderTips/BartenderTips'
 import './CalculatorForm.css'
+import moment from 'moment'
 
 class CalculatorForm extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentDateTime: Date().toLocaleString(),
+            currentDateTime: moment().format('MMMM Do YYYY'),
             totalCcTips: 0,
             bohTips: 0,
             prepTips: 0,
             busserTips: 0,
-            barbackTips: 0,
+            barbacks: [],
             totalTipOut: 0,
             tipsRemaining: 0
         }
@@ -53,7 +54,7 @@ class CalculatorForm extends Component {
         return (
             <div>
                 <h1>Tip Out Calculator</h1>
-                <p>{this.state.currentDateTime}</p>
+                <h2>{this.state.currentDateTime}</h2>
                 <form>
                     <TotalCcTips
                         totalCcTips={this.state.totalCcTips}
@@ -71,7 +72,10 @@ class CalculatorForm extends Component {
                         busserTips={this.state.busserTips}
                         onUpdateState={this.updateState}
                     />
-                    <BarbackTips />
+                    <BarbackTips 
+                        barbacks={this.state.barbacks}
+                        onUpdateState={this.updateState}
+                    />
                     <BartenderTips
                         totalTipOut={this.state.totalTipOut}
                         tipsRemaining={this.state.tipsRemaining}

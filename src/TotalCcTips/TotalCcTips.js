@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import TipContext from '../TipContext/TipContext'
 import './TotalCcTips.css'
 
-console.log(TipContext)
 
 class TotalCcTips extends Component {
 

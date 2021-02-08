@@ -21,10 +21,7 @@ class BusserTips extends Component {
         let newTotalTips = Number(event.target.value)
         this.setState({
             totalTips: newTotalTips
-        })
-
-        this.props.onUpdateState(newTotalTips, "busserTips")
-    
+        })    
     }
 
     updateTipsPerHr = (event) => {
@@ -98,6 +95,8 @@ class BusserTips extends Component {
             foodSales: Number(event.target.value),
             totalTips: Number(totalTips)
         })
+        
+        this.props.onUpdateState(totalTips, "busserTips")
     }   
 
     render() {
