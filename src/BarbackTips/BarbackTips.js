@@ -23,7 +23,11 @@ class BarbackTips extends Component {
         })
         this.setState({
             barbacks: barbackName
+        }, () => {
+            this.props.onUpdateArray(this.state.barbacks)
         })
+
+        console.log(this.state.barbacks)
     }
 
     updateBarbackBottles = (barback, bottles) => {
@@ -35,6 +39,8 @@ class BarbackTips extends Component {
         })
         this.setState({
             barbacks: barbackBottles
+        }, () => {
+            this.props.onUpdateArray(this.state.barbacks)
         })
     }
 
@@ -50,8 +56,11 @@ class BarbackTips extends Component {
 
         this.setState({
             barbacks: barbackSales
+        }, () => {
+            this.props.onUpdateArray(this.state.barbacks)
         })
     }
+
 
     render() {
         return (

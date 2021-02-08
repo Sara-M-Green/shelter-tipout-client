@@ -39,6 +39,8 @@ class BusserTips extends Component {
         })
         this.setState({
             bussers: busserName
+        }, () => {
+            this.props.onUpdateArray(this.state.bussers)
         })
     }
 
@@ -52,6 +54,8 @@ class BusserTips extends Component {
         })
         this.setState({bussers: updatedBussers}, () => {
             this.sumBusserHrs(busser)
+        }, () => {
+            this.props.onUpdateArray(this.state.bussers)
         })
     }
 
@@ -83,7 +87,9 @@ class BusserTips extends Component {
             b.busserTips = b.busserHours * this.state.tipsPerHr
             return b
         })
-        this.setState({})
+        this.setState({}, () => {
+            this.props.onUpdateArray(this.state.bussers)
+        })
     }
 
 

@@ -16,6 +16,7 @@ class CalculatorForm extends Component {
             totalCcTips: 0,
             bohTips: 0,
             prepTips: 0,
+            bussers: [],
             busserTips: 0,
             barbacks: [],
             totalTipOut: 0,
@@ -24,6 +25,8 @@ class CalculatorForm extends Component {
     }
 
     addAllTips = () => {
+        const busserTipsArray = this.state.bussers.map(b => b.busserTips)
+        console.log(busserTipsArray)
         const tipSum = this.state.bohTips + this.state.prepTips + this.state.busserTips
         this.setState({
             totalTipOut: tipSum
@@ -50,6 +53,26 @@ class CalculatorForm extends Component {
        
     }
 
+    updateBarbacksArray = (newArr) => {
+        this.setState(state => {
+            const barbacks = newArr
+
+            return {
+                barbacks
+            }
+        })
+    }
+
+    updateBussersArray = (newArr) => {
+        this.setState(state => {
+            const bussers = newArr
+
+            return {
+                bussers
+            }
+        })
+    }
+
     render() {
         return (
             <div>
@@ -71,10 +94,11 @@ class CalculatorForm extends Component {
                     <BusserTips 
                         busserTips={this.state.busserTips}
                         onUpdateState={this.updateState}
+                        onUpdateArray={this.updateBussersArray}
                     />
                     <BarbackTips 
                         barbacks={this.state.barbacks}
-                        onUpdateState={this.updateState}
+                        onUpdateArray={this.updateBarbacksArray}
                     />
                     <BartenderTips
                         totalTipOut={this.state.totalTipOut}
