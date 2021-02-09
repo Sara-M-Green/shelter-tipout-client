@@ -6,7 +6,7 @@ class BusserTips extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            sales: 0,
+            sales: "",
             totalTips: 0,
             tipsPerHr: "",
             totalHrs: 0,
@@ -29,7 +29,7 @@ class BusserTips extends Component {
             tipsPerHr:  Number(event.target.value)
         })
     }
-
+0
     updateBusserName = (busser, name) => {
         const busserName = this.state.bussers.map(b => {
             if (b === busser) {

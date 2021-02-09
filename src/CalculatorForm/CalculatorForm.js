@@ -13,7 +13,7 @@ class CalculatorForm extends Component {
         super(props);
         this.state = {
             currentDateTime: moment().format('MMMM Do YYYY'),
-            totalCcTips: 0,
+            totalCcTips: "",
             bohTips: 0,
             prepTips: 0,
             bussers: [],
