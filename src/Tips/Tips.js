@@ -22,8 +22,8 @@ class Tips extends React.Component {
                     <table>
                         <thead>
                             <tr>
-                                <th>12/28/20</th>
                                 <th>Name</th>
+                                <th>12/28/20</th>
                                 <th>12/30/20</th>
                                 <th>12/31/20</th>
                                 <th>01/01/2101</th>
