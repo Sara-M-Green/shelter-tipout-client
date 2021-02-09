@@ -11,7 +11,7 @@ class Bartender extends React.Component {
                         id={"bartenderName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.bartender, event.target.value)}
                     >
-                        <option value="">Bartender Name:</option>
+                        <option value="">Name:</option>
                         <option value="Tucker">Tucker</option>
                         <option value="Sara">Sara</option>
                         <option value="Steph">Steph</option>

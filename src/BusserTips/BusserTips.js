@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Bussers from '../Bussers/Bussers'
 import './BusserTips.css'
 
+const createNewBusser = () => {
+    return {busserName: "", busserHours: 0, busserTips: 0}
+}
+
 class BusserTips extends Component {
     constructor(props) {
         super(props);
@@ -11,7 +15,6 @@ class BusserTips extends Component {
             tipsPerHr: "",
             totalHrs: 0,
             bussers: [
-                {busserName: "", busserHours: 0, busserTips: 0},
                 {busserName: "", busserHours: 0, busserTips: 0},
             ]
         }
@@ -104,7 +107,20 @@ class BusserTips extends Component {
         })
         
         this.props.onUpdateState(totalTips, "busserTips")
-    }   
+    } 
+    
+    handleAddBusser = (event) => {
+        event.preventDefault()
+        const newBusser = createNewBusser()
+
+        const newBussersArray = [...this.state.bussers, newBusser]
+
+
+        this.setState({
+            bussers: newBussersArray
+        })
+        
+    }
 
     render() {
         return (
@@ -176,6 +192,7 @@ class BusserTips extends Component {
                                 />
                             )}
                         </ul>
+                        <button onClick={this.handleAddBusser}>Add Busser</button>
                     </section>
                 </div>
                 

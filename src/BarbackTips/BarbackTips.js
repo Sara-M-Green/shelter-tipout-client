@@ -2,14 +2,16 @@ import React, { Component } from 'react'
 import Barbacks from '../Barbacks/Barbacks'
 import './BarbackTips.css'
 
+const createNewBarback = () => {
+    return {name: "", sales: 0, tips: 0, bottles: 0}
+}
+
 class BarbackTips extends Component {
     constructor(props) {
         super(props);
         this.state = {
             barbacks: [
                 {name: "", sales: 0, tips: 0, bottles: 0},
-                {name: "", sales: 0, tips: 0, bottles: 0},
-
             ]
         }
     }
@@ -59,6 +61,19 @@ class BarbackTips extends Component {
         })
     }
 
+    handleAddBarback = (event) => {
+        event.preventDefault()
+        console.log('adding barback')
+        const newBarback = createNewBarback()
+
+        const newBarbackArray = [...this.state.barbacks, newBarback]
+
+
+        this.setState({
+            barbacks: newBarbackArray
+        })
+        
+    }
 
     render() {
         return (
@@ -83,6 +98,7 @@ class BarbackTips extends Component {
                                 />
                             )}
                         </ul>
+                        <button onClick={this.handleAddBarback}>Add Barback</button>
                     </section>
                     
                 </div>

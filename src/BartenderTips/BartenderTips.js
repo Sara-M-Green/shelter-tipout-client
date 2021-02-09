@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import Bartender from '../Bartender/Bartender'
 import './BartenderTips.css'
 
+const createNewBartender = () => {
+    return {name: "", hours: 0, tips: 0, bottles: 0}
+}
+
 class BartenderTips extends Component {
     constructor(props) {
         super(props)
@@ -10,9 +14,7 @@ class BartenderTips extends Component {
             tipsPerHr: 0,
             totalHrs: 0,
             bartenders: [
-                {name: "", hours: 0, tips: 0, bottles: 0},
-                {name: "", hours: 0, tips: 0, bottles: 0},
-                {name: "", hours: 0, tips: 0, bottles: 0},  
+                {name: "", hours: 0, tips: 0, bottles: 0}, 
             ]
         }
     }
@@ -99,6 +101,21 @@ class BartenderTips extends Component {
         })
     }
 
+    
+
+    handleAddBartender = (event) => {
+        event.preventDefault()
+        const newBartender = createNewBartender()
+
+        const newBartendersArray = [...this.state.bartenders, newBartender]
+
+
+        this.setState({
+            bartenders: newBartendersArray
+        })
+        
+    }
+
     render() {
         return (
             <div className="bartender-tips">
@@ -163,9 +180,8 @@ class BartenderTips extends Component {
                                     onUpdateHours={this.updateBartenderHrs}
                                 />
                             )}
-                            
-                            
                         </ul>
+                        <button onClick={this.handleAddBartender}>Add Bartender</button>
                     </section>
                     
                 </div>

@@ -11,7 +11,7 @@ class Bussers extends Component {
                         name={"busserName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.busser, event.target.value)}
                     >
-                        <option value="">Busser Name:</option>
+                        <option value="">Name:</option>
                         <option value="Jesus">Jesus</option>
                         <option value="Estefania">Estefania</option>
                         <option value="Fernanda">Fernanda</option>
