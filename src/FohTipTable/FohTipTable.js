@@ -1,101 +1,162 @@
 import React from 'react'
+import { useTable } from 'react-table'
+import './FohTipTable.css'
+ 
+function FohTipTable() {
+  const data = React.useMemo(
+    () => [
+      {
+        col1: 'Tucker',
+        col2: '$405.15',
+        col3: '$256.32',
+        col4: '$173.87',
+        col5: '$293.87',
+        col6: '$0.00',
+        col7: '$0.00',
+        col8: '$293.94',
+        col9: '24',
+        col10: '$96',
+        col11: '$1,519.15',
 
-class FohTipTable extends React.Component {
-    render() {
-        return (
-            <div>
-                <section>
-                    <h2>December 28, 2020 - January 10, 2021</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>12/28/20</th>
-                                <th>12/30/20</th>
-                                <th>12/31/20</th>
-                                <th>01/01/21</th>
-                                <th>01/02/21</th>
-                                <th>01/03/21</th>
-                                <th>01/04/21</th>
-                                <th>Total Bottles</th>
-                                <th>Bottle Commission</th>
-                                <th>Total Tips</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Tucker</td>
-                                <td>$405.15</td>
-                                <td>$256.32</td>
-                                <td>$173.87</td>
-                                <td>$293.87</td>
-                                <td>$0.00</td>
-                                <td>$0.00</td>
-                                <td>$236.94</td>
-                                <td>24</td>
-                                <td>$96.00</td>
-                                <td>1734.95</td>
-                            </tr>
-            
-                        
-                            <tr>
-                                <td>Sara</td>
-                                <td>$49.11</td>
-                                <td>$0.00</td>
-                                <td>$0.00</td>
-                                <td>$327.77</td>
-                                <td>$209.44</td>
-                                <td>$134.10</td>
-                                <td>$118.47</td>
-                                <td>20</td>
-                                <td>$80.00</td>
-                                <td>1569.37</td>
-                            </tr>
-                            <tr>
-                                <td>Steph</td>
-                                <td>$0.00</td>
-                                <td>$234.96</td>
-                                <td>$369.46</td>
-                                <td>$282.56</td>
-                                <td>$372.34</td>
-                                <td>$344.84</td>
-                                <td>$0.00</td>
-                                <td>23</td>
-                                <td>$92.00</td>
-                                <td>$1734.95</td>
-                            </tr>
-                            <tr>
-                                <td>BOH</td>
-                                <td>$19.92</td>
-                                <td>$13.94</td>
-                                <td>$17.26</td>
-                                <td>$31.17</td>
-                                <td>$22.20</td>
-                                <td>$12.96</td>
-                                <td>$12.96</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>$285.05</td>
-                            </tr>
-                            <tr>
-                                <td>Prep</td>
-                                <td>$19.02</td>
-                                <td>$19.30</td>
-                                <td>$29.44</td>
-                                <td>$47.99</td>
-                                <td>$27.16</td>
-                                <td>$35.05</td>
-                                <td>$12.96</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>$271.83</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-        )
-    }
+      },
+      {
+        col1: 'Sara',
+        col2: '$49.11',
+        col3: '$0.00',
+        col4: '$0.00',
+        col5: '$327.77',
+        col6: '$209.44',
+        col7: '$134.10',
+        col8: '$118.47',
+        col9: '20',
+        col10: '$80',
+        col11: '$965.42',
+      },
+      {
+        col1: 'Steph',
+        col2: '$0.00',
+        col3: '$234.96',
+        col4: '$369.46',
+        col5: '$282.56',
+        col6: '$372.34',
+        col7: '$344.84',
+        col8: '$0.00',
+        col9: '23',
+        col10: '$92',
+        col11: '$1,696.16',
+      },
+      {
+        col1: 'Prep',
+        col2: '$19.02',
+        col3: '$19.30',
+        col4: '$29.44',
+        col5: '$47.99',
+        col6: '$27.16',
+        col7: '$35.05',
+        col8: '$12.96',
+        col9: '-',
+        col10: '-',
+        col11: '$190.92',
+      },
+    ],
+    []
+  )
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'Name',
+        accessor: 'col1', // accessor is the "key" in the data
+      },
+      {
+        Header: '12/28/20',
+        accessor: 'col2',
+      },
+      {
+        Header: '12/29/20',
+        accessor: 'col3',
+      },
+      {
+        Header: '12/30/20',
+        accessor: 'col4',
+      },
+      {
+        Header: '12/31/20',
+        accessor: 'col5',
+      },
+      {
+        Header: '01/01/21',
+        accessor: 'col6',
+      },
+      {
+        Header: '01/02/21',
+        accessor: 'col7',
+      },
+      {
+        Header: '01/03/21',
+        accessor: 'col8',
+      },
+      {
+        Header: 'Bottles Sold',
+        accessor: 'col9',
+      },
+      {
+        Header: 'Commission',
+        accessor: 'col10',
+      },
+      {
+        Header: 'Total Owed',
+        accessor: 'col11',
+      },
+    ],
+    []
+  )
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns, data })
+
+  return (
+    <table {...getTableProps()} >
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th
+                {...column.getHeaderProps()}
+                
+              >
+                {column.render('Header')}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                    
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
 }
 
 export default FohTipTable

@@ -1,55 +1,105 @@
 import React from 'react'
+import { useTable } from 'react-table'
+ 
+function BohTipTable() {
+  const data = React.useMemo(
+    () => [
+      {
+        col1: 'Dario',
+        col2: '4',
+        col3: '$7.25',
 
-class BohTipTable extends React.Component {
-    render() {
-        return (
-            <div>
-                <section>
-                    <h2>Kitchen Tips</h2>
-                    <h3>BOH Tips: $285.05</h3>
-                    <h3>Total BOH Hours: 157.26</h3>
-                    <h3>Tips Per Hour: $1.813</h3>
 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Hours</th>
-                                <th>Tips</th>
-                            </tr>    
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Dario</td>
-                                <td>4</td>
-                                <td>$7.25</td>
-                            </tr>
-                            <tr>
-                                <td>Manuel</td>
-                                <td>30.5</td>
-                                <td>$55.28</td>
-                            </tr>
-                            <tr>
-                                <td>Sergio</td>
-                                <td>21.25</td>
-                                <td>$38.52</td>
-                            </tr>
-                            <tr>
-                                <td>Nick</td>
-                                <td>57.53</td>
-                                <td>$104.28</td>
-                            </tr>
-                            <tr>
-                                <td>Luis</td>
-                                <td>43.98</td>
-                                <td>79.72</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </section>
-            </div>
-        )
-    }
+      },
+      {
+        col1: 'Manuel',
+        col2: '30.5',
+        col3: '$55.28',
+
+      },
+      {
+        col1: 'Sergio',
+        col2: '21.25',
+        col3: '$38.52',
+
+      },
+      {
+        col1: 'Nick',
+        col2: '57.53',
+        col3: '$104.28',
+
+      },
+      {
+        col1: 'Luis',
+        col2: '43.98',
+        col3: '$79.72',
+
+      },
+    ],
+    []
+  )
+
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: 'Name',
+        accessor: 'col1', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Hours',
+        accessor: 'col2',
+      },
+      {
+        Header: 'Tips',
+        accessor: 'col3',
+      },
+    ],
+    []
+  )
+
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    rows,
+    prepareRow,
+  } = useTable({ columns, data })
+
+  return (
+    <table {...getTableProps()} >
+      <thead>
+        {headerGroups.map(headerGroup => (
+          <tr {...headerGroup.getHeaderGroupProps()}>
+            {headerGroup.headers.map(column => (
+              <th
+                {...column.getHeaderProps()}
+              >
+                {column.render('Header')}
+              </th>
+            ))}
+          </tr>
+        ))}
+      </thead>
+      <tbody {...getTableBodyProps()}>
+        {rows.map(row => {
+          prepareRow(row)
+          return (
+            <tr {...row.getRowProps()}>
+              {row.cells.map(cell => {
+                return (
+                  <td
+                    {...cell.getCellProps()}
+                  >
+                    {cell.render('Cell')}
+                  </td>
+                )
+              })}
+            </tr>
+          )
+        })}
+      </tbody>
+    </table>
+  )
 }
 
 export default BohTipTable
