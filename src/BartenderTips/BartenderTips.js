@@ -7,16 +7,96 @@ class BartenderTips extends Component {
         super(props)
         this.state = {
             totalTipOut: 0,
-            tipsRemaining: 0,
-            tipsPerHr: "",
+            tipsPerHr: 0,
             totalHrs: 0,
             bartenders: [
-                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
-                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
-                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
-                {bartenderName: "", bartenderHours: 0, bartenderTips: 0, bartenderBottles: 0},
+                {name: "", hours: 0, tips: 0, bottles: 0},
+                {name: "", hours: 0, tips: 0, bottles: 0},
+                {name: "", hours: 0, tips: 0, bottles: 0},  
             ]
         }
+    }
+
+    updateBartenderBottles = (bartender, bottles) => {
+        const bartenderBottles = this.state.bartenders.map(b => {
+            if (b === bartender) {
+                b.bottles = Number(bottles)
+            }
+            return b
+        })
+
+        this.setState({
+            bartenders: bartenderBottles
+        })
+    }
+
+    updateBartenderName = (bartender, name) => {
+        const bartenderName = this.state.bartenders.map(b => {
+            if (b === bartender) {
+                b.name = name
+            }
+            return b
+        })
+        this.setState({
+            bartenders: bartenderName
+        }, () => {
+            this.props.onUpdateArray(this.state.bartenders)
+        })
+    }
+
+    updateBartenderHrs = (bartender, newHours) => {
+        const updatedHours = this.state.bartenders.map(b => {
+            if (b === bartender) {
+                b.hours = newHours
+            }
+            return b
+        })
+
+        this.setState({
+            bartenders: updatedHours
+        }, () => {
+            this.sumBartenderHrs(bartender)
+        }, () => {
+            this.props.onUpdateArray(this.state.bartenders)
+        })
+    }
+
+    sumBartenderHrs = (bartender) => {
+        const hoursArray = this.state.bartenders.map(b =>
+            b.hours
+        )
+        const sumOfHours = hoursArray.reduce(function(a, b) {
+            return parseInt(a) + parseInt (b)
+        }, 0)
+
+        this.setState({
+            totalHrs: sumOfHours
+        }, () => {
+            this.calculateTipsPerHr(bartender)
+        })
+    }
+
+    calculateTipsPerHr = (bartender) => {
+        if (this.state.totalHrs === 0) {
+            return
+        }
+        const tipsPerHour = (this.props.tipsRemaining/this.state.totalHrs).toFixed(2)
+        this.setState({
+            tipsPerHr: Number(tipsPerHour)
+        }, () => {
+            this.updateBartenderTips(bartender)
+        })
+    }
+
+    updateBartenderTips = () => {
+        this.state.bartenders.map(b => {
+            const tips = (b.hours * this.state.tipsPerHr).toFixed(2)
+            b.tips = Number(tips)
+            return b
+        })
+        this.setState({}, () => {
+            this.props.onUpdateArray(this.state.bartenders)
+        })
     }
 
     render() {
@@ -52,6 +132,8 @@ class BartenderTips extends Component {
                         placeholder="0" 
                         name="bartender-hours" 
                         id="bartender-hours"
+                        value={this.state.totalHrs}
+                        onChange={() => this.sumBartenderHrs()}
                     />
                 </div>
                 <div>
@@ -61,6 +143,8 @@ class BartenderTips extends Component {
                         placeholder="0.00" 
                         name="bartender-hourly-tips" 
                         id="bartender-hourly-tips"
+                        value={this.state.tipsPerHr}
+                        readOnly
                     />
                 </div>
                 <div>
@@ -71,6 +155,9 @@ class BartenderTips extends Component {
                                     key={i}
                                     id={i}
                                     bartender={bartender}
+                                    onUpdateName={this.updateBartenderName}
+                                    onUpdateBottles={this.updateBartenderBottles}
+                                    onUpdateHours={this.updateBartenderHrs}
                                 />
                             )}
                             

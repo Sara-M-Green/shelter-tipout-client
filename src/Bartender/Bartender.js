@@ -6,11 +6,18 @@ class Bartender extends React.Component {
             <li>
                 <div>
                     <label htmlFor={"bartenderName" + this.props.id}>Bartender: </label>
-                    <select name={"bartenderName" + this.props.id} id={"bartenderName" + this.props.id}>
+                    <select 
+                        name={"bartenderName" + this.props.id} 
+                        id={"bartenderName" + this.props.id}
+                        onChange={(event) => this.props.onUpdateName(this.props.bartender, event.target.value)}
+                    >
                         <option value="">Bartender Name:</option>
                         <option value="Tucker">Tucker</option>
                         <option value="Sara">Sara</option>
                         <option value="Steph">Steph</option>
+                        <option value="Alec">Alec</option>
+                        <option value="Josh">Josh</option>
+                        <option value="Cam">Cam</option>
                     </select>
 
                     <label htmlFor={"bartenderHours" + this.props.id}>Hours: </label>
@@ -19,6 +26,10 @@ class Bartender extends React.Component {
                         placeholder="0" 
                         id={"bartenderHours" + this.props.id}
                         name={"bartenderHours" + this.props.id}
+                        value={this.props.bartender.hours}
+                        onChange={(event) => {
+                            this.props.onUpdateHours(this.props.bartender, Number(event.target.value))
+                        }}
                     />
 
                     <label htmlFor={"bartenderTips" + this.props.id}>Tips: </label>
@@ -27,6 +38,8 @@ class Bartender extends React.Component {
                         placeholder="0.00" 
                         id={"bartenderTips" + this.props.id}
                         name={"bartenderTips" + this.props.id}
+                        value={this.props.bartender.tips}
+                        readOnly
                     />
 
                     <label htmlFor={"bartenderBottles" + this.props.id}>Bottles Sold: </label>
@@ -35,6 +48,8 @@ class Bartender extends React.Component {
                         placeholder="0" 
                         name={"bartenderBottles" + this.props.id}
                         id={"bartenderBottles" + this.props.id}
+                        value={this.props.bartender.bottles}
+                        onChange={(event) => this.props.onUpdateBottles(this.props.bartender, event.target.value)}
                     />
                 </div>
             </li>

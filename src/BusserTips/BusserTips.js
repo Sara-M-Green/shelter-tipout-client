@@ -6,7 +6,7 @@ class BusserTips extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            foodSales: 0,
+            sales: 0,
             totalTips: 0,
             tipsPerHr: "",
             totalHrs: 0,
@@ -84,7 +84,8 @@ class BusserTips extends Component {
 
     updateBusserTips = () => {
         this.state.bussers.map(b => {
-            b.busserTips = b.busserHours * this.state.tipsPerHr
+            const tips = (b.busserHours * this.state.tipsPerHr).toFixed(2)
+            b.busserTips = Number(tips)
             return b
         })
         this.setState({}, () => {
@@ -95,10 +96,10 @@ class BusserTips extends Component {
 
     calculateTotalTips = (event) =>{
         event.preventDefault()
-        const totalTips = (Number(event.target.value) * 0.05).toFixed(2)
+        const totalTips = (Number(event.target.value) * 0.02).toFixed(2)
 
         this.setState({
-            foodSales: Number(event.target.value),
+            sales: Number(event.target.value),
             totalTips: Number(totalTips)
         })
         
@@ -109,16 +110,19 @@ class BusserTips extends Component {
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
-                <p>Enter Total Food Sales</p> 
-                <p>Select the Busser's name, and enter how many hours they worked</p>
+                <div className="instructions">
+                    <p>Enter Total Sales During Busser Time Frame</p> 
+                    <p>Select the Busser's name, and enter how many hours they worked</p>
+                </div>
+                
                 <div>
-                    <label htmlFor="busser-food-sales">Total Food Sales During Busser Shift: $</label>
+                    <label htmlFor="busser-sales">Total Sales During Busser Shift: $</label>
                     <input 
                         placeholder="0.00" 
                         type="number" 
-                        name="busser-food-sales" 
-                        id="busser-food-sales" 
-                        value={this.state.foodSales}
+                        name="busser-sales" 
+                        id="busser-sales" 
+                        value={this.state.sales}
                         onChange={this.calculateTotalTips}
                     />    
                 </div>

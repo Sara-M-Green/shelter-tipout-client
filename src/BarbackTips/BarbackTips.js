@@ -26,8 +26,6 @@ class BarbackTips extends Component {
         }, () => {
             this.props.onUpdateArray(this.state.barbacks)
         })
-
-        console.log(this.state.barbacks)
     }
 
     updateBarbackBottles = (barback, bottles) => {

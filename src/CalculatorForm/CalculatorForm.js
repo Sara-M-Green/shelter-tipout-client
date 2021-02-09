@@ -20,14 +20,23 @@ class CalculatorForm extends Component {
             busserTips: 0,
             barbacks: [],
             totalTipOut: 0,
-            tipsRemaining: 0
+            tipsRemaining: 0,
+            bartenders: []
         }
     }
 
     addAllTips = () => {
         const busserTipsArray = this.state.bussers.map(b => b.busserTips)
-        console.log(busserTipsArray)
-        const tipSum = this.state.bohTips + this.state.prepTips + this.state.busserTips
+        const busserTipsSum = busserTipsArray.reduce(function(a, b) {
+            return a + b
+        }, 0)
+        
+        const barbackTipsArray = this.state.barbacks.map(b => b.tips)
+        const barbackTipsSum = barbackTipsArray.reduce(function(a, b) {
+            return a + b
+        }, 0)
+      
+        const tipSum = this.state.bohTips + this.state.prepTips + busserTipsSum + barbackTipsSum
         this.setState({
             totalTipOut: tipSum
         }, () => {
@@ -36,11 +45,12 @@ class CalculatorForm extends Component {
     }
 
     calculateTipsRemaining = () => {
-        console.log(this.state.totalCcTips, this.state.tipsRemaining, this.state.totalTipOut)
-
-        const tipsRemaining = Number(this.state.TotalCcTips - this.state.totalTipOut) || 0
+        if (this.state.totalCcTips === 0) {
+            return
+        }
+        const tips = Number(this.state.totalCcTips - this.state.totalTipOut)
         this.setState({
-            tipsRemaining: tipsRemaining
+            tipsRemaining: tips
         })
     }
 
@@ -60,6 +70,8 @@ class CalculatorForm extends Component {
             return {
                 barbacks
             }
+        }, () => {
+            this.addAllTips()
         })
     }
 
@@ -69,6 +81,18 @@ class CalculatorForm extends Component {
 
             return {
                 bussers
+            }
+        }, () => {
+            this.addAllTips()
+        })
+    }
+
+    updateBartendersArray = (newArr) => {
+        this.setState(state => {
+            const bartenders = newArr
+
+            return {
+                bartenders
             }
         })
     }
@@ -104,6 +128,7 @@ class CalculatorForm extends Component {
                         totalTipOut={this.state.totalTipOut}
                         tipsRemaining={this.state.tipsRemaining}
                         onAddTips={this.addAllTips}
+                        onUpdateArray={this.updateBartendersArray}
                     />
                 </form>
             </div>
