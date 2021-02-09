@@ -13,7 +13,7 @@ class FohTipTable extends React.Component {
                                 <th>12/28/20</th>
                                 <th>12/30/20</th>
                                 <th>12/31/20</th>
-                                <th>01/01/2101</th>
+                                <th>01/01/21</th>
                                 <th>01/02/21</th>
                                 <th>01/03/21</th>
                                 <th>01/04/21</th>
