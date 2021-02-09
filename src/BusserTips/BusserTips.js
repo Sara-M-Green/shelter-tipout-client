@@ -179,10 +179,10 @@ class BusserTips extends Component {
                     </section>
                 </div>
                 
-                <div className="btns">
+                {/* <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>
-                </div>
+                </div> */}
             </div>
         )
     }

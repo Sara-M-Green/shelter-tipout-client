@@ -8,6 +8,9 @@ class Homepage extends Component {
                 <Link to={"/calculator"}>
                     <button>Start Tip Out</button>
                 </Link>
+                <Link to={"/tips"}>
+                    <button>View Tips</button>
+                </Link>
             </div>
         )
     }

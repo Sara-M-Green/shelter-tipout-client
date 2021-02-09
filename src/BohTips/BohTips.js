@@ -25,7 +25,7 @@ class BohTips extends Component {
             <div className="boh-tips">
                 <h2>BOH Tips</h2>
                 <div>
-                    <label htmlFor="food-sales">Enter total food sales: $</label>
+                    <label htmlFor="food-sales" className="instructions">Enter total food sales: $</label>
                     <input 
                         type="number"
                         name="food-sales" 
@@ -51,10 +51,10 @@ class BohTips extends Component {
                     />    
                 </div>
         
-                <div className="btns">
+                {/* <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>    
-                </div>
+                </div> */}
                 
             </div>
         )

@@ -103,6 +103,9 @@ class BartenderTips extends Component {
         return (
             <div className="bartender-tips">
                 <h2>Bartender Tips</h2>
+                <div className="instructions">
+                    <p>Select the Bartender's name, enter how many hours they worked and how many bottles they sold</p>
+                </div>
                 <div>
                     <label htmlFor="total-tip-out">Total Tip Out: $</label>
                     <input 
@@ -166,10 +169,10 @@ class BartenderTips extends Component {
                     </section>
                     
                 </div>
-                <div className="btns">
+                {/* <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>    
-                </div>
+                </div> */}
             </div>
         )
     }

@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom'
 import Navbar from './Navbar/Navbar'
 import Homepage from './Homepage/Homepage'
 import CalculatorForm from './CalculatorForm/CalculatorForm'
+import Tips from './Tips/Tips'
 import './App.css'
 
 
@@ -14,6 +15,10 @@ class App extends Component {
         <Route 
           path="/calculator" 
           component={CalculatorForm} 
+        />
+        <Route 
+          path="/tips" 
+          component={Tips} 
         />
         <Route 
           exact 

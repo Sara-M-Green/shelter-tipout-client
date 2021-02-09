@@ -25,7 +25,7 @@ class PrepTips extends Component {
             <div className="prep-tips">
                 <h2>Prep Tips</h2>
                 <div>
-                    <label htmlFor="cocktail-sales">Enter total cocktail sales: $</label>
+                    <label htmlFor="cocktail-sales" className="instructions">Enter total cocktail sales: $</label>
                     <input 
                         type="number"
                         name="cocktail-sales" 
@@ -52,10 +52,10 @@ class PrepTips extends Component {
                 </div>
         
                 
-                <div className="btns">
+                {/* <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>    
-                </div>
+                </div> */}
             </div>
         )
     }

@@ -64,6 +64,10 @@ class BarbackTips extends Component {
         return (
             <div className="barback-tips">
                 <h2>Barback Tips</h2>
+                <div className="instructions">
+                    <p>Enter Total Sales During Barback Time Frame</p> 
+                    <p>Select the Barback's name, enter how many hours they worked and how many bottles they sold</p>
+                </div>
                 
                 <div>
                     <section className="barback-instances">
@@ -83,10 +87,10 @@ class BarbackTips extends Component {
                     
                 </div>
         
-                <div className="btns">
+                {/* <div className="btns">
                     <button>Next</button>
                     <button>Skip</button>    
-                </div>
+                </div> */}
                 
             </div>
         )
