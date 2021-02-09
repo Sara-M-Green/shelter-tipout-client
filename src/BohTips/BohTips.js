@@ -24,8 +24,11 @@ class BohTips extends Component {
         return (
             <div className="boh-tips">
                 <h2>BOH Tips</h2>
+                <div className="instructions-p">
+                    <p >Enter Total Food Sales</p> 
+                </div>
                 <div>
-                    <label htmlFor="food-sales" className="instructions">Enter total food sales: $</label>
+                    <label htmlFor="food-sales" className="input">Total Food Sales: $</label>
                     <input 
                         type="number"
                         name="food-sales" 

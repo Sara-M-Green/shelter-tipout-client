@@ -24,8 +24,11 @@ class PrepTips extends Component {
         return (
             <div className="prep-tips">
                 <h2>Prep Tips</h2>
+                <div className="instructions-p">
+                    <p >Enter Total Cocktail Sales</p> 
+                </div>
                 <div>
-                    <label htmlFor="cocktail-sales" className="instructions">Enter total cocktail sales: $</label>
+                    <label htmlFor="cocktail-sales" className="input">Total Cocktail Sales: $</label>
                     <input 
                         type="number"
                         name="cocktail-sales" 

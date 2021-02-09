@@ -16,7 +16,7 @@ class Tips extends React.Component {
                     </div>
                     <div>
                         <label htmlFor="end-date">End Date</label>
-                        <input type="date" name="end-date" id="end-date" value="2021-01-10" readOnly />    
+                        <input type="date" name="end-date" id="end-date" value="2021-01-03" readOnly />    
                     </div>
                 </section>
 

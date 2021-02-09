@@ -5,3 +5,20 @@ label {
 .instructions {
     font-style: italic;
 }
+
+.instructions-p {
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+label.input {
+    font-weight: bold;
+}
+
+p {
+    margin: 0 auto;
+}
+
+h2 {
+    margin-bottom: 5px;
+}

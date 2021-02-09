@@ -5,7 +5,7 @@ class Barbacks extends React.Component {
         return (
             <li>
                 <div>
-                    <label htmlFor="name">Barback: </label>
+                    <label htmlFor="name" className="input">Barback Name: </label>
                         <select 
                             name="name" 
                             id="barback-name" 
@@ -19,7 +19,7 @@ class Barbacks extends React.Component {
                         </select>    
                 </div>
                 <div>
-                    <label htmlFor="sales">Enter total sales: $</label>
+                    <label htmlFor="sales" className="input">Total Sales: $</label>
                     <input 
                         type="number"
                         name="sales" 

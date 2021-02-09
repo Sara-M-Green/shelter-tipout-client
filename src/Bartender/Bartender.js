@@ -5,7 +5,7 @@ class Bartender extends React.Component {
         return (
             <li>
                 <div>
-                    <label htmlFor={"bartenderName" + this.props.id}>Bartender: </label>
+                    <label htmlFor={"bartenderName" + this.props.id} className="input">Bartender Name: </label>
                     <select 
                         name={"bartenderName" + this.props.id} 
                         id={"bartenderName" + this.props.id}
@@ -20,7 +20,7 @@ class Bartender extends React.Component {
                         <option value="Cam">Cam</option>
                     </select>
 
-                    <label htmlFor={"bartenderHours" + this.props.id}>Hours: </label>
+                    <label htmlFor={"bartenderHours" + this.props.id} className="input">Hours: </label>
                     <input 
                         type="number" 
                         placeholder="0" 

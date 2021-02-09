@@ -110,13 +110,13 @@ class BusserTips extends Component {
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
-                <div className="instructions">
-                    <p>Enter Total Sales During Busser Time Frame</p> 
+                <div className="instructions-p">
+                    <p >Enter Total Sales During Busser Time Frame</p> 
                     <p>Select the Busser's name, and enter how many hours they worked</p>
                 </div>
                 
                 <div>
-                    <label htmlFor="busser-sales">Total Sales During Busser Shift: $</label>
+                    <label htmlFor="busser-sales" className="input">Total Sales During Busser Shift: $</label>
                     <input 
                         placeholder="0.00" 
                         type="number" 

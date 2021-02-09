@@ -8,7 +8,10 @@ class TotalCcTips extends Component {
         return (
             <div className="total-cc-tips">
                 <h2>Total Credit Card Tips</h2>
-                <label htmlFor="total-cc-tips" className="instructions">Enter total credit card tips: $</label>
+                <div className="instructions-p">
+                    <p >Enter Total Credit Card Tips</p> 
+                </div>
+                <label htmlFor="total-cc-tips" className="input" >Total Credit Card Tips: $</label>
                 <input 
                     type="number"
                     name="total-cc-tips" 

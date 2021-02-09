@@ -6,7 +6,7 @@ class Bussers extends Component {
         return (
             <li>
                 <div>
-                    <label htmlFor={"busserName" + this.props.id}>Busser: </label>
+                    <label htmlFor={"busserName" + this.props.id} className="input">Busser Name: </label>
                     <select 
                         name={"busserName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.busser, event.target.value)}
@@ -18,7 +18,7 @@ class Bussers extends Component {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor={"busserHours" + this.props.id}>Hours: </label>
+                    <label htmlFor={"busserHours" + this.props.id} className="input">Hours: </label>
                     <input 
                         type="number" 
                         placeholder="0" 
