@@ -5,6 +5,7 @@ class Homepage extends Component {
     render() {
         return (
             <div>
+                <h1>Turbo Tips</h1>
                 <Link to={"/calculator"}>
                     <button>Start Tip Out</button>
                 </Link>

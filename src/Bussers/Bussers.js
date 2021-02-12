@@ -24,6 +24,7 @@ class Bussers extends Component {
                         placeholder="0" 
                         name={"busserHours" + this.props.id}
                         value={this.props.busser.busserHours}
+                        step={0.05}
                         onChange={(event) => {
                             this.props.onUpdateHours(this.props.busser, Number(event.target.value))
                         }}
