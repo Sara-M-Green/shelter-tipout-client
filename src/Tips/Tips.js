@@ -13,7 +13,7 @@ class Tips extends React.Component {
 
     componentDidMount() {
         const url = config.API_ENDPOINT
-        fetch(`${url}/tips`, {
+        fetch(`https://murmuring-temple-10540.herokuapp.com/api/tips`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
