@@ -1,3 +1,3 @@
 export default {
-    API_ENDPOINT: `https://secret-mesa-19574.herokuapp.com/api`
+    API_ENDPOINT: `https://murmuring-temple-10540.herokuapp.com/api`
 }
