@@ -37,7 +37,6 @@ class Tips extends React.Component {
                 </section>
 
                 <FohTipTable />
-                <BohTipTable />
                 
             </div>
         )
