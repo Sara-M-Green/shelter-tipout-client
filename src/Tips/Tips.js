@@ -1,5 +1,7 @@
 import React from 'react'
 import FohTipTable from '../FohTipTable/FohTipTable'
+import BohTipTable from '../BohTipTable/BohTipTable'
+
 import './Tips.css'
 import config from '../config'
 
@@ -51,6 +53,7 @@ class Tips extends React.Component {
                 </section>
 
                 <FohTipTable />
+                <BohTipTable />
                 
             </div>
         )
