@@ -13,23 +13,7 @@ class Tips extends React.Component {
         }
     }
 
-    componentDidMount() {
-        const url = config.API_ENDPOINT
-        fetch(`https://murmuring-temple-10540.herokuapp.com/api/tips`, {
-            method: 'GET',
-            headers: {
-                'content-type': 'application/json'
-            }
-        })
-        .then(res => {
-            if (!res.ok) {
-              throw new Error(res.status)
-            }
-            return res.json()
-        })
-        .then(tips => this.setState({tips: tips}))
-        .catch(error => this.setState({ error }))
-    }
+    
 
     render() {
         return (
