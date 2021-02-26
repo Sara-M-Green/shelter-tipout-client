@@ -16,8 +16,32 @@ class BusserTips extends Component {
             totalHrs: 0,
             bussers: [
                 {busserName: "", busserHours: 0, busserTips: 0},
-            ]
+            ],
+            employees: []
         }
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8000/api/employees/3', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+              throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(bussers => {
+            this.setState({ employees: bussers })
+            console.log(this.state.employees)
+        })
+
+        .catch(err => {
+            console.log('Handling the error here.', err);
+        });
     }
 
     updateTotalTips = (event) => {
@@ -32,7 +56,7 @@ class BusserTips extends Component {
             tipsPerHr:  Number(event.target.value)
         })
     }
-0
+
     updateBusserName = (busser, name) => {
         const busserName = this.state.bussers.map(b => {
             if (b === busser) {
@@ -123,6 +147,9 @@ class BusserTips extends Component {
     }
 
     render() {
+        const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+        console.log(names)
+        
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
@@ -183,6 +210,7 @@ class BusserTips extends Component {
                                     key={i}
                                     id={i}
                                     busser={busser}
+                                    nameOptions={this.state.employees}
                                     onUpdateHours={this.updateBusserHrs} 
                                     sumBusserHrs={this.sumBusserHrs}
                                     onUpdateName={this.updateBusserName}

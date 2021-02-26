@@ -3,7 +3,15 @@ import Navbar from '../Navbar/Navbar'
 import CalculatorForm from '../CalculatorForm/CalculatorForm'
 
 class TipOutCalculator extends Component {
-    render() {
+    constructor(props) {
+        super(props)
+        this.state = {
+            employees: []
+        }
+    }
+
+        render() {
+        
         return (
             <div>
                 <Navbar />

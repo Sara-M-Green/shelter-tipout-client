@@ -1,9 +1,9 @@
 import React from 'react'
 import FohTipTable from '../FohTipTable/FohTipTable'
-import BohTipTable from '../BohTipTable/BohTipTable'
+// import BohTipTable from '../BohTipTable/BohTipTable'
 
 import './Tips.css'
-import config from '../config'
+// import config from '../config'
 
 class Tips extends React.Component {
     constructor(props) {
@@ -13,9 +13,32 @@ class Tips extends React.Component {
         }
     }
 
-    
+    componentDidMount() {
+        fetch('http://localhost:8000/api/tips', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+              throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(tips => {
+            this.setState({ tips: tips })
+            console.log(this.state.tips)
+        })
+
+        .catch(err => {
+            console.log('Handling the error here.', err);
+        });
+    }
+
 
     render() {
+        
         return (
             <div>
                 <h1>Tips</h1>
@@ -36,7 +59,7 @@ class Tips extends React.Component {
                     
                 </section>
 
-                <FohTipTable />
+                <FohTipTable allTips={this.state.tips} />
                 
             </div>
         )

@@ -2,7 +2,7 @@ import React from 'react'
 import { useTable } from 'react-table'
 import './FohTipTable.css'
  
-function FohTipTable() {
+function FohTipTable(props) {
   const data = React.useMemo(
     () => [
       {
@@ -120,42 +120,56 @@ function FohTipTable() {
     prepareRow,
   } = useTable({ columns, data })
 
+  const tipItem = props.allTips.map((tip) => {
+    return (
+        <li key={`${tip.tip_date}-${tip.emp_name}`}>
+            <p>{tip.tip_date}</p>
+            <p>{tip.bottles}</p>
+            <p>{tip.tips}</p>
+            <p>{tip.emp_name}</p> 
+        </li>
+    )
+})
+
   return (
-    <table {...getTableProps()} >
-      <thead>
-        {headerGroups.map(headerGroup => (
-          <tr {...headerGroup.getHeaderGroupProps()}>
-            {headerGroup.headers.map(column => (
-              <th
-                {...column.getHeaderProps()}
-                
-              >
-                {column.render('Header')}
-              </th>
-            ))}
-          </tr>
-        ))}
-      </thead>
-      <tbody {...getTableBodyProps()}>
-        {rows.map(row => {
-          prepareRow(row)
-          return (
-            <tr {...row.getRowProps()}>
-              {row.cells.map(cell => {
-                return (
-                  <td
-                    {...cell.getCellProps()}
-                    
-                  >
-                    {cell.render('Cell')}
-                  </td>
-                )
-              })}
+    <div>
+      <ul>{tipItem}</ul>
+      <table {...getTableProps()} >
+        <thead>
+          {headerGroups.map(headerGroup => (
+            <tr {...headerGroup.getHeaderGroupProps()}>
+              {headerGroup.headers.map(column => (
+                <th
+                  {...column.getHeaderProps()}
+                  
+                >
+                  {column.render('Header')}
+                </th>
+              ))}
             </tr>
-          )
-        })}
-      </tbody>
-    </table>
+          ))}
+        </thead>
+        <tbody {...getTableBodyProps()}>
+          {rows.map(row => {
+            prepareRow(row)
+            return (
+              <tr {...row.getRowProps()}>
+                {row.cells.map(cell => {
+                  return (
+                    <td
+                      {...cell.getCellProps()}
+                      
+                    >
+                      {cell.render('Cell')}
+                    </td>
+                  )
+                })}
+              </tr>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
   )
 }
 

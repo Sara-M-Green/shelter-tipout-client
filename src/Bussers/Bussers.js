@@ -1,21 +1,35 @@
 import React, { Component } from 'react'
+import Select from 'react-select'
 import './Bussers.css'
 
 class Bussers extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectOptions: []
+        }
+    }
+
     render() {
+
+        
+
+        const names = this.props.nameOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+        console.log(names)
+
+       
+
         return (
             <li>
                 <div>
                     <label htmlFor={"busserName" + this.props.id} className="input">Busser Name: </label>
-                    <select 
+                    {/* <Select  /> */}
+                    
+                    <Select 
                         name={"busserName" + this.props.id}
-                        onChange={(event) => this.props.onUpdateName(this.props.busser, event.target.value)}
-                    >
-                        <option value="">Name:</option>
-                        <option value="Jesus">Jesus</option>
-                        <option value="Estefania">Estefania</option>
-                        <option value="Fernanda">Fernanda</option>
-                    </select>
+                        onChange={(event) => this.props.onUpdateName(this.props.busser, event.value)}
+                        options={names}
+                    />
                 </div>
                 <div>
                     <label htmlFor={"busserHours" + this.props.id} className="input">Hours: </label>
