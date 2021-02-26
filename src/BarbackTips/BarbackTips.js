@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import Barbacks from '../Barbacks/Barbacks'
 import './BarbackTips.css'
 
@@ -11,9 +12,32 @@ class BarbackTips extends Component {
         super(props);
         this.state = {
             barbacks: [
-                {name: "", sales: 0, tips: 0, bottles: 0},
-            ]
+                {name: "", sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
+            ],
+            employees: []
         }
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8000/api/employees/4', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+              throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(barbacks => {
+            this.setState({ employees: barbacks })
+        })
+
+        .catch(err => {
+            console.log('Handling the error here.', err);
+        });
     }
 
     updateBarbackName = (barback, name) => {
@@ -76,6 +100,9 @@ class BarbackTips extends Component {
     }
 
     render() {
+        // const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+        // console.log(names)
+
         return (
             <div className="barback-tips">
                 <h2>Barback Tips</h2>
@@ -91,6 +118,7 @@ class BarbackTips extends Component {
                                 <Barbacks 
                                     key={i}
                                     id={i}
+                                    selectOptions = {this.state.employees}
                                     barback={barback}
                                     onCalculateBarbackTips={this.calculateBarbackTips}
                                     onUpdateBarbackName={this.updateBarbackName}

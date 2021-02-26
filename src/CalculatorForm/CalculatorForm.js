@@ -25,6 +25,33 @@ class CalculatorForm extends Component {
         }
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault()
+        const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders)
+        console.log('handling submit')
+        console.log(employees)
+        // const requests = employees.map((emp) => {
+        //     return fetch('http://localhost:8000/api/tips', {
+        //         method: 'POST',
+        //         headers: {
+        //             'content-type': 'application/json'
+        //         },
+        //         body: JSON.stringify(emp),
+        //     })
+        // })
+        // return Promise.all(requests)        
+        // .then(res => {
+        //     if(!res.ok) {
+        //         return res.json().then(e => Promise.reject(e))
+        //     }
+        //     console.log(res.json())
+        //     // return res.json()
+        // })
+        // .catch((error) => {
+        //     console.log(error)
+        // })
+    }
+
     addAllTips = () => {
         const busserTipsArray = this.state.bussers.map(b => b.busserTips)
         const busserTipsSum = busserTipsArray.reduce(function(a, b) {
@@ -102,7 +129,7 @@ class CalculatorForm extends Component {
             <div>
                 <h1>Tip Out Calculator</h1>
                 <h2>{this.state.currentDateTime}</h2>
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <TotalCcTips
                         totalCcTips={this.state.totalCcTips}
                         onUpdateState={this.updateState}

@@ -1,22 +1,27 @@
 import React from 'react'
+import Select from 'react-select'
 
 class Barbacks extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectOptions: []
+        }
+    }
+
     render() {
+        const names = this.props.selectOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+
         return (
             <li>
                 <div>
                     <label htmlFor="name" className="input">Barback Name: </label>
-                        <select 
-                            name="name" 
-                            id="barback-name" 
-                            value={this.props.barback.name}
-                            onChange={(event) => this.props.onUpdateBarbackName(this.props.barback, event.target.value)}
-                        >
-                            <option value="">Name:</option>
-                            <option value="Cam">Cam</option>
-                            <option value="Maddy">Maddy</option>
-                            <option value="Jesus">Jesus</option>
-                        </select>    
+                    <Select
+                        name="name" 
+                        id="barback-name"
+                        options={names}
+                        onChange={(event) => this.props.onUpdateBarbackName(this.props.barback, event.value)}
+                    />
                 </div>
                 <div>
                     <label htmlFor="sales" className="input">Total Sales: $</label>

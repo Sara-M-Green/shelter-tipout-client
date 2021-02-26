@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import Bussers from '../Bussers/Bussers'
 import './BusserTips.css'
 
@@ -15,7 +16,7 @@ class BusserTips extends Component {
             tipsPerHr: "",
             totalHrs: 0,
             bussers: [
-                {busserName: "", busserHours: 0, busserTips: 0},
+                {busserName: "", busserHours: 0, busserTips: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
             ],
             employees: []
         }
@@ -36,7 +37,6 @@ class BusserTips extends Component {
         })
         .then(bussers => {
             this.setState({ employees: bussers })
-            console.log(this.state.employees)
         })
 
         .catch(err => {
@@ -147,8 +147,6 @@ class BusserTips extends Component {
     }
 
     render() {
-        const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
-        console.log(names)
         
         return (
             <div className="busser-tips">
@@ -210,7 +208,7 @@ class BusserTips extends Component {
                                     key={i}
                                     id={i}
                                     busser={busser}
-                                    nameOptions={this.state.employees}
+                                    selectOptions={this.state.employees}
                                     onUpdateHours={this.updateBusserHrs} 
                                     sumBusserHrs={this.sumBusserHrs}
                                     onUpdateName={this.updateBusserName}

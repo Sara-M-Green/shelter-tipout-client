@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import Bartender from '../Bartender/Bartender'
 import './BartenderTips.css'
 
@@ -14,9 +15,32 @@ class BartenderTips extends Component {
             tipsPerHr: 0,
             totalHrs: 0,
             bartenders: [
-                {name: "", hours: 0, tips: 0, bottles: 0}, 
-            ]
+                {name: "", hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}, 
+            ],
+            employees: []
         }
+    }
+
+    componentDidMount() {
+        fetch('http://localhost:8000/api/employees/5', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application/json'
+            }
+        })
+        .then(res => {
+            if (!res.ok) {
+              throw new Error(res.status)
+            }
+            return res.json()
+        })
+        .then(bartenders => {
+            this.setState({ employees: bartenders })
+        })
+
+        .catch(err => {
+            console.log('Handling the error here.', err);
+        });
     }
 
     updateBartenderBottles = (bartender, bottles) => {
@@ -175,6 +199,7 @@ class BartenderTips extends Component {
                                     key={i}
                                     id={i}
                                     bartender={bartender}
+                                    selectOptions={this.state.employees}
                                     onUpdateName={this.updateBartenderName}
                                     onUpdateBottles={this.updateBartenderBottles}
                                     onUpdateHours={this.updateBartenderHrs}

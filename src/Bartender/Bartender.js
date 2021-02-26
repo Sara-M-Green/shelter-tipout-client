@@ -1,12 +1,29 @@
 import React from 'react'
+import Select from 'react-select'
 
 class Bartender extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectOptions: []
+        }
+    }
+
     render () {
+        const names = this.props.selectOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+
         return (
             <li>
                 <div>
                     <label htmlFor={"bartenderName" + this.props.id} className="input">Bartender Name: </label>
-                    <select 
+                    <Select
+                        name={"bartenderName" + this.props.id}
+                        id={"bartenderName" + this.props.id}
+                        onChange={(event) => this.props.onUpdateName(this.props.bartender, event.value)}
+                        options={names}
+                    />
+                    
+                    {/* <select 
                         name={"bartenderName" + this.props.id} 
                         id={"bartenderName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.bartender, event.target.value)}
@@ -18,7 +35,7 @@ class Bartender extends React.Component {
                         <option value="Alec">Alec</option>
                         <option value="Josh">Josh</option>
                         <option value="Cam">Cam</option>
-                    </select>
+                    </select> */}
 
                     <label htmlFor={"bartenderHours" + this.props.id} className="input">Hours: </label>
                     <input 

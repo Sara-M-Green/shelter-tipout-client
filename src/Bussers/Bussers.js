@@ -11,14 +11,8 @@ class Bussers extends Component {
     }
 
     render() {
-
-        
-
-        const names = this.props.nameOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
-        console.log(names)
-
-       
-
+        const names = this.props.selectOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
+     
         return (
             <li>
                 <div>
