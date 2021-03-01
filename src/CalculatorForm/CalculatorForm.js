@@ -25,10 +25,24 @@ class CalculatorForm extends Component {
         }
     }
 
+
     handleSubmit = (e) => {
         e.preventDefault()
+        
+        this.state.bussers.forEach((e) => {
+            delete e.busserHours;
+        })
+
+        this.state.barbacks.forEach((e) => {
+            delete e.sales;
+        })
+
+        this.state.bartenders.forEach((e) => {
+            delete e.hours;
+        })    
+
+        
         const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders)
-        console.log('handling submit')
         console.log(employees)
         // const requests = employees.map((emp) => {
         //     return fetch('http://localhost:8000/api/tips', {
@@ -52,8 +66,10 @@ class CalculatorForm extends Component {
         // })
     }
 
+
+
     addAllTips = () => {
-        const busserTipsArray = this.state.bussers.map(b => b.busserTips)
+        const busserTipsArray = this.state.bussers.map(b => b.tips)
         const busserTipsSum = busserTipsArray.reduce(function(a, b) {
             return a + b
         }, 0)

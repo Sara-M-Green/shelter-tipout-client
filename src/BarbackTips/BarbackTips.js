@@ -4,7 +4,7 @@ import Barbacks from '../Barbacks/Barbacks'
 import './BarbackTips.css'
 
 const createNewBarback = () => {
-    return {name: "", sales: 0, tips: 0, bottles: 0}
+    return {name: "", sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
 }
 
 class BarbackTips extends Component {
@@ -87,7 +87,6 @@ class BarbackTips extends Component {
 
     handleAddBarback = (event) => {
         event.preventDefault()
-        console.log('adding barback')
         const newBarback = createNewBarback()
 
         const newBarbackArray = [...this.state.barbacks, newBarback]

@@ -44,7 +44,7 @@ class Bussers extends Component {
                         type="number" 
                         placeholder="0.00" 
                         name={"busserTips" + this.props.id}
-                        value={this.props.busser.busserTips}
+                        value={this.props.busser.tips}
                         readOnly
                     />
                 </div>    

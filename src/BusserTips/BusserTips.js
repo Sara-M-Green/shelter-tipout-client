@@ -4,7 +4,7 @@ import Bussers from '../Bussers/Bussers'
 import './BusserTips.css'
 
 const createNewBusser = () => {
-    return {busserName: "", busserHours: 0, busserTips: 0}
+    return {busserName: "", emp_id: 0, busserHours: 0, tips: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
 }
 
 class BusserTips extends Component {
@@ -16,7 +16,7 @@ class BusserTips extends Component {
             tipsPerHr: "",
             totalHrs: 0,
             bussers: [
-                {busserName: "", busserHours: 0, busserTips: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
+                {busserName: "", emp_id: 0, busserHours: 0, tips: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
             ],
             employees: []
         }
@@ -36,7 +36,9 @@ class BusserTips extends Component {
             return res.json()
         })
         .then(bussers => {
-            this.setState({ employees: bussers })
+            this.setState({ 
+                employees: bussers 
+            })
         })
 
         .catch(err => {
@@ -64,6 +66,16 @@ class BusserTips extends Component {
             }
             return b
         })
+
+
+        // const busserId = this.state.employees.find(e =>{
+        //     if (e.emp_name === name) {
+        //         return e.emp_id
+        //     }
+        // })
+
+        // console.log(busserId)
+
         this.setState({
             bussers: busserName
         }, () => {
@@ -112,7 +124,7 @@ class BusserTips extends Component {
     updateBusserTips = () => {
         this.state.bussers.map(b => {
             const tips = (b.busserHours * this.state.tipsPerHr).toFixed(2)
-            b.busserTips = Number(tips)
+            b.tips = Number(tips)
             return b
         })
         this.setState({}, () => {
@@ -130,7 +142,7 @@ class BusserTips extends Component {
             totalTips: Number(totalTips)
         })
         
-        this.props.onUpdateState(totalTips, "busserTips")
+        this.props.onUpdateState(totalTips, "tips")
     } 
     
     handleAddBusser = (event) => {
@@ -178,7 +190,7 @@ class BusserTips extends Component {
                         onChange={this.updateTotalTips}
                     />
                 </div>
-                <div>
+                <div className="hide">
                     <label htmlFor="total-busser-hrs">Total Busser Hours:</label>
                     <input 
                         placeholder="0" 
@@ -189,7 +201,7 @@ class BusserTips extends Component {
                         onChange={() => this.sumBusserHrs()}
                     />    
                 </div>
-                <div>
+                <div className="hide">
                     <label htmlFor="busser-hourly-tips">Busser Tips Per Hour:</label>
                     <input 
                         placeholder="0.00" 

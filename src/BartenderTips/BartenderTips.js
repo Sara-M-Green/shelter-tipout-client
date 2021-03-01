@@ -4,7 +4,7 @@ import Bartender from '../Bartender/Bartender'
 import './BartenderTips.css'
 
 const createNewBartender = () => {
-    return {name: "", hours: 0, tips: 0, bottles: 0}
+    return {name: "", hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
 }
 
 class BartenderTips extends Component {
