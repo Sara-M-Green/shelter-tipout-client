@@ -4,7 +4,7 @@ import Barbacks from '../Barbacks/Barbacks'
 import './BarbackTips.css'
 
 const createNewBarback = () => {
-    return {name: "", sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
+    return {name: "", emp_id: 0, sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
 }
 
 class BarbackTips extends Component {
@@ -12,7 +12,7 @@ class BarbackTips extends Component {
         super(props);
         this.state = {
             barbacks: [
-                {name: "", sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
+                {name: "", emp_id: 0, sales: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))},
             ],
             employees: []
         }
@@ -41,14 +41,25 @@ class BarbackTips extends Component {
     }
 
     updateBarbackName = (barback, name) => {
-        const barbackName = this.state.barbacks.map(b => {
+        this.state.barbacks.map(b => {
             if (b === barback) {
                 b.name = name
             }
             return b
         })
+
+        const emp = this.state.employees.find(e => e.emp_name === name)
+
+        const updatedBarback = this.state.barbacks.map(b => {
+            if (b === barback) {
+                b.emp_id = emp.emp_id
+            }
+            return b
+        })
+
+
         this.setState({
-            barbacks: barbackName
+            barbacks: updatedBarback
         }, () => {
             this.props.onUpdateArray(this.state.barbacks)
         })

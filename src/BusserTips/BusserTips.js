@@ -60,24 +60,25 @@ class BusserTips extends Component {
     }
 
     updateBusserName = (busser, name) => {
-        const busserName = this.state.bussers.map(b => {
+        this.state.bussers.map(b => {
             if (b === busser) {
                 b.busserName = name
             }
             return b
         })
 
+        const emp = this.state.employees.find(e => e.emp_name === name)
 
-        // const busserId = this.state.employees.find(e =>{
-        //     if (e.emp_name === name) {
-        //         return e.emp_id
-        //     }
-        // })
-
-        // console.log(busserId)
+        const updatedBusser = this.state.bussers.map(b => {
+            if (b === busser) {
+                b.emp_id = emp.emp_id
+            }
+            return b
+        })
+        
 
         this.setState({
-            bussers: busserName
+            bussers: updatedBusser
         }, () => {
             this.props.onUpdateArray(this.state.bussers)
         })

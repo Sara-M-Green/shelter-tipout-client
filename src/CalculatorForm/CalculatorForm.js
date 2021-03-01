@@ -30,40 +30,42 @@ class CalculatorForm extends Component {
         e.preventDefault()
         
         this.state.bussers.forEach((e) => {
-            delete e.busserHours;
+            delete e.busserHours
+            delete e.busserName
         })
 
         this.state.barbacks.forEach((e) => {
-            delete e.sales;
+            delete e.sales
+            delete e.name
         })
 
         this.state.bartenders.forEach((e) => {
-            delete e.hours;
+            delete e.hours
+            delete e.name
         })    
 
         
         const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders)
         console.log(employees)
-        // const requests = employees.map((emp) => {
-        //     return fetch('http://localhost:8000/api/tips', {
-        //         method: 'POST',
-        //         headers: {
-        //             'content-type': 'application/json'
-        //         },
-        //         body: JSON.stringify(emp),
-        //     })
-        // })
-        // return Promise.all(requests)        
-        // .then(res => {
-        //     if(!res.ok) {
-        //         return res.json().then(e => Promise.reject(e))
-        //     }
-        //     console.log(res.json())
-        //     // return res.json()
-        // })
-        // .catch((error) => {
-        //     console.log(error)
-        // })
+        const requests = employees.map((emp) => {
+            return fetch('http://localhost:8000/api/tips', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(emp),
+            })
+        })
+        return Promise.all(requests)        
+        .then(res => {
+            if(!res.ok) {
+                return res.json().then(e => Promise.reject(e))
+            }
+            return res
+        })
+        .catch((error) => {
+            console.log(error)
+        })
     }
 
 

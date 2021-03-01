@@ -4,7 +4,7 @@ import Bartender from '../Bartender/Bartender'
 import './BartenderTips.css'
 
 const createNewBartender = () => {
-    return {name: "", hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
+    return {name: "", emp_id: 0, hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}
 }
 
 class BartenderTips extends Component {
@@ -15,7 +15,7 @@ class BartenderTips extends Component {
             tipsPerHr: 0,
             totalHrs: 0,
             bartenders: [
-                {name: "", hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}, 
+                {name: "", emp_id: 0, hours: 0, tips: 0, bottles: 0, tip_date: parseInt(moment().format('YYYYMMDD'))}, 
             ],
             employees: []
         }
@@ -57,14 +57,25 @@ class BartenderTips extends Component {
     }
 
     updateBartenderName = (bartender, name) => {
-        const bartenderName = this.state.bartenders.map(b => {
+        this.state.bartenders.map(b => {
             if (b === bartender) {
                 b.name = name
             }
             return b
         })
+
+        const emp = this.state.employees.find(e => e.emp_name === name)
+
+        const updatedBartender = this.state.bartenders.map(b => {
+            if (b === bartender) {
+                b.emp_id = emp.emp_id
+            }
+            return b
+        })
+        
+
         this.setState({
-            bartenders: bartenderName
+            bartenders: updatedBartender
         }, () => {
             this.props.onUpdateArray(this.state.bartenders)
         })
