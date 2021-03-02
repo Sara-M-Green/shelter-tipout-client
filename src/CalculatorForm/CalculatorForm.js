@@ -15,7 +15,9 @@ class CalculatorForm extends Component {
             currentDateTime: moment().format('MMMM Do YYYY'),
             totalCcTips: "",
             bohTips: 0,
+            boh: [{emp_id: 1, tip_date: parseInt(moment().format('YYYYMMDD')), tips: 0}],
             prepTips: 0,
+            prep: [{emp_id: 2, tip_date: parseInt(moment().format('YYYYMMDD')), tips: 0}],
             bussers: [],
             busserTips: 0,
             barbacks: [],
@@ -45,7 +47,7 @@ class CalculatorForm extends Component {
         })    
 
         
-        const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders)
+        const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders).concat(this.state.boh).concat(this.state.prep)
         console.log(employees)
         const requests = employees.map((emp) => {
             return fetch('http://localhost:8000/api/tips', {
@@ -142,6 +144,26 @@ class CalculatorForm extends Component {
         })
     }
 
+    updateBohArray = (newArr) => {
+        this.setState(state => {
+            const boh = newArr
+
+            return {
+                boh
+            }
+        })
+    }
+
+    updatePrepArray = (newArr) => {
+        this.setState(state => {
+            const prep = newArr
+
+            return {
+                prep
+            }
+        })
+    }
+
     render() {
         return (
             <div>
@@ -154,11 +176,13 @@ class CalculatorForm extends Component {
                     />
                     <BohTips 
                         bohTips={this.state.bohTips}
+                        onUpdateArray={this.updateBohArray}
                         onUpdateState={this.updateState}
                     />
                     <PrepTips 
                         prepTips={this.state.prepTips}
                         onUpdateState={this.updateState}
+                        onUpdateArray={this.updatePrepArray}
                     />
                     <BusserTips 
                         busserTips={this.state.busserTips}

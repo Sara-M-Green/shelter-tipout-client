@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import './PrepTips.css'
 
 class PrepTips extends Component {
@@ -6,6 +7,7 @@ class PrepTips extends Component {
         super(props);
         this.state = {
             cocktailSales: "",
+            prep:[{emp_id: 2, tip_date: parseInt(moment().format('YYYYMMDD')), tips: 0}]
         }
     }
 
@@ -15,9 +17,26 @@ class PrepTips extends Component {
 
         this.setState({
             cocktailSales: Number(event.target.value),
+        }, () => {
+            this.updatePrep(this.state.prep[0], this.props.prepTips)
         })
 
         this.props.onUpdateState(tips, "prepTips")
+    }
+
+    updatePrep = (prep, tips) => {
+        const prepObject = this.state.prep.map(p => {
+            if (p === prep) {
+                p.tips = tips
+            }
+            return p
+        })
+
+        this.setState({
+            prep: prepObject
+        }, () => {
+            this.props.onUpdateArray(this.state.prep)
+        })
     }
 
     render() {

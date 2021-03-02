@@ -110,9 +110,6 @@ class BarbackTips extends Component {
     }
 
     render() {
-        // const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
-        // console.log(names)
-
         return (
             <div className="barback-tips">
                 <h2>Barback Tips</h2>

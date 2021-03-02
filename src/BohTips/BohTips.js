@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import moment from 'moment'
 import './BohTips.css'
 
 class BohTips extends Component {
@@ -6,6 +7,7 @@ class BohTips extends Component {
         super(props);
         this.state = {
             foodSales: "",
+            boh: [{emp_id: 1, tip_date: parseInt(moment().format('YYYYMMDD')), tips: 0}]
         }
     }
 
@@ -14,10 +16,27 @@ class BohTips extends Component {
         const tips = (Number(event.target.value) * 0.03).toFixed(2)
         
         this.setState({
-            foodSales: Number(event.target.value),
+            foodSales: Number(event.target.value)
+        }, () => {
+            this.updateBoh(this.state.boh[0], this.props.bohTips)
         })
 
         this.props.onUpdateState(tips, "bohTips")
+    }
+
+    updateBoh = (boh, tips) => {
+        const bohObject = this.state.boh.map(b => {
+            if (b === boh) {
+                b.tips = tips
+            }
+            return b
+        })
+
+        this.setState({
+            boh: bohObject
+        }, () => {
+            this.props.onUpdateArray(this.state.boh)
+        })
     }
 
     render() {

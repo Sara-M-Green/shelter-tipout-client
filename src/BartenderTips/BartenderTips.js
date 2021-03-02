@@ -180,7 +180,7 @@ class BartenderTips extends Component {
                         readOnly
                     />
                 </div>
-                <div>
+                <div className="hide">
                     <label htmlFor="bartender-hours">Total Bartender Hours: </label>
                     <input 
                         type="number" 
@@ -191,7 +191,7 @@ class BartenderTips extends Component {
                         onChange={() => this.sumBartenderHrs()}
                     />
                 </div>
-                <div>
+                <div className="hide">
                     <label htmlFor="bartender-hourly-tips">Bartender Tips Per Hour: </label>
                     <input 
                         type="number" 
