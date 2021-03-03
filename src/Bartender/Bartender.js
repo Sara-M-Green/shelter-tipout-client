@@ -23,19 +23,7 @@ class Bartender extends React.Component {
                         options={names}
                     />
                     
-                    {/* <select 
-                        name={"bartenderName" + this.props.id} 
-                        id={"bartenderName" + this.props.id}
-                        onChange={(event) => this.props.onUpdateName(this.props.bartender, event.target.value)}
-                    >
-                        <option value="">Name:</option>
-                        <option value="Tucker">Tucker</option>
-                        <option value="Sara">Sara</option>
-                        <option value="Steph">Steph</option>
-                        <option value="Alec">Alec</option>
-                        <option value="Josh">Josh</option>
-                        <option value="Cam">Cam</option>
-                    </select> */}
+                   
 
                     <label htmlFor={"bartenderHours" + this.props.id} className="input">Hours: </label>
                     <input 

@@ -63,8 +63,11 @@ class CalculatorForm extends Component {
             if(!res.ok) {
                 return res.json().then(e => Promise.reject(e))
             }
-            return res
+            return res.json()
         })
+        // .then(data => {
+        //     this.props.history.push('/tips')
+        // })
         .catch((error) => {
             console.log(error)
         })
