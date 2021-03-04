@@ -88,11 +88,11 @@ function FohTipTable(props) {
         Footer: info => {
           const total = React.useMemo(
             () =>
-              info.rows.reduce((sum, row) => parseInt(row.values.TotalOwed) + sum, 0), 
+              info.rows.reduce((sum, row) => parseFloat(row.values.TotalOwed) + sum, 0), 
               console.log(info.rows),
               [info.rows],
           )
-              return <>${total}</>
+              return <>${total.toFixed(2)}</>
         },
       },
     ],
