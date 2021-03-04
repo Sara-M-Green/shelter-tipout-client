@@ -23,12 +23,17 @@ function FohTipTable(props) {
   }
    
   const data = filterArray(props.allTips).map(obj => ({
-    col1: obj.emp_name,
-    col2: createDate(obj.tip_date),
-    col3: obj.tips,
-    col4: obj.bottles,
-    col5: (obj.bottles * 4),
+    col1: createDate(obj.tip_date),
+    col2: obj.tips,
+    col3: obj.bottles,
+    col4: (obj.bottles * 4),
+    col5: 0
   }))
+
+  let totalOwedSum = 0
+  for (let i = 0; i < data.length; i++) {
+    totalOwedSum += data[i].col5
+  }
 
   React.useMemo(() => data, [])
   
@@ -36,22 +41,18 @@ function FohTipTable(props) {
   const columns = React.useMemo(
     () => [
       {
-        Header: 'Name',
-        accessor: 'col1', // accessor is the "key" in the data
-        Footer: 'Totals:'
-      },
-      {
         Header: 'Date',
-        accessor: 'col2',
+        accessor: 'col1',
+        Footer: 'Totals'
         
       },
       {
         Header: 'Tips',
-        accessor: 'col3',
+        accessor: 'col2',
         Footer: info => {
           const total = React.useMemo(
             () =>
-              info.rows.reduce((sum, row) => row.values.col3 + sum, 0), 
+              info.rows.reduce((sum, row) => row.values.col2 + sum, 0), 
               [info.rows]
           )
               return <>${total.toFixed(2)}</>
@@ -59,11 +60,11 @@ function FohTipTable(props) {
       },
       {
         Header: 'Bottles',
-        accessor: 'col4',
+        accessor: 'col3',
         Footer: info => {
           const total = React.useMemo(
             () =>
-              info.rows.reduce((sum, row) => row.values.col4 + sum, 0), 
+              info.rows.reduce((sum, row) => row.values.col3 + sum, 0), 
               [info.rows]
           )
               return <>{total}</>
@@ -71,26 +72,27 @@ function FohTipTable(props) {
       },
       {
         Header: 'Commssions',
-        accessor: 'col5',
+        accessor: 'col4',
         Footer: info => {
           const total = React.useMemo(
             () =>
-              info.rows.reduce((sum, row) => row.values.col5 + sum, 0), 
+              info.rows.reduce((sum, row) => row.values.col4 + sum, 0), 
               [info.rows]
           )
               return <>${total.toFixed(2)}</>
         },
       },
       {
-        Header: 'Total Owed',
-        accessor: row => [row.col3, row.col5].reduce((sum, current) => sum + current, 0).toFixed(2),
+        Header: 'TotalOwed',
+        accessor: row => [row.col2, row.col4].reduce((sum, current) => sum + current, 0).toFixed(2),
         Footer: info => {
           const total = React.useMemo(
             () =>
-              info.rows.reduce((sum, row) => row.values.col6 + sum, 0), 
+              info.rows.reduce((sum, row) => parseInt(row.values.TotalOwed) + sum, 0), 
+              console.log(info.rows),
               [info.rows],
           )
-              return <>${total.toFixed(2)}</>
+              return <>${total}</>
         },
       },
     ],

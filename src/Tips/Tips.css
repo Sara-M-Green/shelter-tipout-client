@@ -1,9 +1,13 @@
 table {
     margin: auto;
-    margin-top: 20px;
+    margin-top: 5px;
 }
 
 .react-select-container {
     max-width: 50%;
     margin: 20px auto;
+}
+
+#table-header {
+    margin-bottom: 3px;
 }

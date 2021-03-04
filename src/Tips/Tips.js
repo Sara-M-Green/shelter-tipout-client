@@ -93,7 +93,7 @@ class Tips extends React.Component {
         const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
         return (
             <div>
-                <h1>Tips</h1>
+                
                 <section>
                     <h2>Select Date Range</h2>
                     <form>
@@ -123,12 +123,14 @@ class Tips extends React.Component {
                                 options={names}
                             />
                         </div>
-                        <div>
-                            <input type="submit" />   
-                        </div>
+                       
                     </form>
                     
                 </section>
+
+                <div>
+                    <h1 id="table-header">{this.state.selectedEmployee} Tips</h1>
+                </div>
 
                 <FohTipTable 
                 allTips={this.state.tips}
