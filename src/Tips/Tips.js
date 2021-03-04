@@ -11,9 +11,12 @@ class Tips extends React.Component {
         super(props)
         this.state = {
             tips: [],
+            tipsByDates: [],
             employees: [],
             selctionOptions: [],
-            selectedEmployee: ""
+            selectedEmployee: "",
+            startDate: 0,
+            endDate: ""
         }
     }
 
@@ -57,9 +60,31 @@ class Tips extends React.Component {
 
     }
 
+    formatDate = (date) => {
+        const year = date.toString().slice(0, 4)
+        const month = date.toString().slice(5, 7)
+        const day = date.toString().slice(8)
+        const newDate = year + month + day
+        return newDate
+    }
+
     onEmployeeSelect = (name) => {
         this.setState({
             selectedEmployee: name
+        })
+    }
+
+    onStartDateSelect = (date) => {
+        const dateAsNum = this.formatDate(date)
+        this.setState({
+            startDate: parseInt(dateAsNum)
+        })
+    }
+
+    onEndDateSelect = (date) => {
+        const dateAsNum = this.formatDate(date)
+        this.setState({
+            endDate: parseInt(dateAsNum)
         })
     }
 
@@ -73,10 +98,20 @@ class Tips extends React.Component {
                     <h2>Select Date Range</h2>
                     <form>
                         <label htmlFor="start-date">Start Date</label>
-                        <input type="date" name="start-date" id="start-date" />
+                        <input 
+                            type="date" 
+                            name="start-date" 
+                            id="start-date"
+                            onChange={(event) => this.onStartDateSelect(event.target.value)} 
+                        />
 
                         <label htmlFor="end-date">End Date</label>
-                        <input type="date" name="end-date" id="end-date" />
+                        <input 
+                            type="date" 
+                            name="end-date" 
+                            id="end-date" 
+                            onChange={(event) => this.onEndDateSelect(event.target.value)}
+                        />
 
                         
                         <div className="react-select-container">
@@ -97,7 +132,10 @@ class Tips extends React.Component {
 
                 <FohTipTable 
                 allTips={this.state.tips}
-                selectedEmployee={this.state.selectedEmployee} />
+                selectedEmployee={this.state.selectedEmployee} 
+                startDate={this.state.startDate}
+                endDate={this.state.endDate}
+                />
                 
             </div>
         )

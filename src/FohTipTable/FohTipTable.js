@@ -4,22 +4,25 @@ import './FohTipTable.css'
 
  
 function FohTipTable(props) {
+
   const createDate = (int) => {
     const year = int.toString().slice(0, 4)
     const month = int.toString().slice(4, 6)
     const day = int.toString().slice(6)
     return month + "-" + day + "-" + year
   }
-  
 
-
-  const selectedEmployeeArray = props.allTips.filter(name => 
-    name.emp_name === props.selectedEmployee
-  ) 
-
-  console.log(selectedEmployeeArray)
-  
-  const data = selectedEmployeeArray.map(obj => ({
+  const filterArray = (arr) => {
+    const startDateArray = arr.filter(tips => tips.tip_date >= props.startDate)
+    const endDateArray = startDateArray.filter(tips => tips.tip_date <= props.endDate)
+    if (props.selectedEmployee === "") {
+      return []  
+    }
+    const filterEmployeeArray = endDateArray.filter(tips => tips.emp_name === props.selectedEmployee)
+    return filterEmployeeArray
+  }
+   
+  const data = filterArray(props.allTips).map(obj => ({
     col1: obj.emp_name,
     col2: createDate(obj.tip_date),
     col3: obj.tips,
@@ -86,7 +89,6 @@ function FohTipTable(props) {
             () =>
               info.rows.reduce((sum, row) => row.values.col6 + sum, 0), 
               [info.rows],
-              console.log(info.rows)
           )
               return <>${total.toFixed(2)}</>
         },
