@@ -48,7 +48,7 @@ class CalculatorForm extends Component {
 
         
         const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders).concat(this.state.boh).concat(this.state.prep)
-        console.log(employees)
+
         const requests = employees.map((emp) => {
             return fetch('http://localhost:8000/api/tips', {
                 method: 'POST',

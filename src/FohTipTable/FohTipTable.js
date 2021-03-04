@@ -30,11 +30,6 @@ function FohTipTable(props) {
     col5: 0
   }))
 
-  let totalOwedSum = 0
-  for (let i = 0; i < data.length; i++) {
-    totalOwedSum += data[i].col5
-  }
-
   React.useMemo(() => data, [])
   
   
