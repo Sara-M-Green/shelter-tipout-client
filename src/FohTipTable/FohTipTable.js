@@ -84,7 +84,6 @@ function FohTipTable(props) {
           const total = React.useMemo(
             () =>
               info.rows.reduce((sum, row) => parseFloat(row.values.TotalOwed) + sum, 0), 
-              console.log(info.rows),
               [info.rows],
           )
               return <>${total.toFixed(2)}</>
