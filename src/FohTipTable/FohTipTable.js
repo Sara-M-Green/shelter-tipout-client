@@ -30,7 +30,7 @@ function FohTipTable(props) {
     col5: 0
   }))
 
-  React.useMemo(() => data, [])
+  React.useMemo(() => data, [data])
   
   
   const columns = React.useMemo(
