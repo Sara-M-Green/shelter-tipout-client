@@ -21,7 +21,7 @@ class Tips extends React.Component {
     }
 
     componentDidMount() {
-        Promise.all([fetch('http://localhost:8000/api/tips', {
+        Promise.all([fetch('https://https://young-crag-90287.herokuapp.com/api/tips', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
@@ -37,7 +37,7 @@ class Tips extends React.Component {
             this.setState({ tips: tips })
         }),
 
-        fetch('http://localhost:8000/api/employees', {
+        fetch('https://young-crag-90287.herokuapp.com/api/employees', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'

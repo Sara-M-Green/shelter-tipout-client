@@ -23,7 +23,7 @@ class BusserTips extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/employees/3', {
+        fetch('https://https://young-crag-90287.herokuapp.com/api/employees/3', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'

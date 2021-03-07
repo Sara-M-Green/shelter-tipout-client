@@ -22,7 +22,7 @@ class BartenderTips extends Component {
     }
 
     componentDidMount() {
-        fetch('http://localhost:8000/api/employees/5', {
+        fetch('https://https://young-crag-90287.herokuapp.com/api/employees/5', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
