@@ -19,7 +19,7 @@ class BarbackTips extends Component {
     }
 
     componentDidMount() {
-        fetch('https://https://young-crag-90287.herokuapp.com/api/employees/4', {
+        fetch('https://young-crag-90287.herokuapp.com/api/employees/4', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'

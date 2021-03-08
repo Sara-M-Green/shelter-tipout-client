@@ -21,7 +21,7 @@ class Tips extends React.Component {
     }
 
     componentDidMount() {
-        Promise.all([fetch('https://https://young-crag-90287.herokuapp.com/api/tips', {
+        Promise.all([fetch('https://young-crag-90287.herokuapp.com/api/tips', {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
