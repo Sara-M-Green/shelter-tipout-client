@@ -53,7 +53,7 @@ class CalculatorForm extends Component {
         const employees = this.state.bussers.concat(this.state.barbacks).concat(this.state.bartenders).concat(this.state.boh).concat(this.state.prep)
 
         const requests = employees.map((emp) => {
-            return fetch('https://https://young-crag-90287.herokuapp.com/api/tips', {
+            return fetch('https://young-crag-90287.herokuapp.com/api/tips', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
