@@ -111,7 +111,7 @@ class Tips extends React.Component {
                         />
                         
                         <div className="react-select-container">
-                        <label htmlFor={"employee" + this.state.employees.emp_id} className="input date-range">Select Employee: </label>
+                        <label htmlFor={"employee" + this.state.employees.emp_id} className="input date-range">Select Employee</label>
                             <Select
                                 className="select-options" 
                                 name={"employee" + this.state.employees.emp_id}
