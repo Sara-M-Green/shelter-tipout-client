@@ -43,7 +43,18 @@ The 'View Tips' page of the app also utilizes both endpoints. It populates the '
 
 
 ### Screenshots
+
+#### Landing Page
+ 
 ![Home Page Screen Shot](./src/images/home-page.png?raw=true "Home Page")
+
+#### Tip Calculator  
+
+![Tip Calculator Screen Shot](./src/images/tip-calculator.png?raw=true "Tip Calculator")
+
+#### View Tips
+
+![View Tips Screen Shot](./src/images/view-tips.png?raw=true "View Tips")
 
 
 
