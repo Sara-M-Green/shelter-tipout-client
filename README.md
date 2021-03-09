@@ -28,19 +28,6 @@ Bartenders Worked:
     Sara - 7.5hrs  
     Cam - 5.5hrs  
 
-### API Documentation
-
-Turbo Tips API solicits two endpoints:
-/employees & /tips.  
-
-The 'Tip Calculator' page makes use of both endpoints.   
-For each department with more than one employee, a GET request is made to the /employees/:dept_id endpoint. This request retrieves all employees from a specific department, and populates those employee names in the respective drop down menu.  
-The 'Tip Calculator' sends a post request to /tips which contains a json object for each employee receiving tips in the format of tip_date, emp_id, bottles sold, and tips earned.  
-
-The 'View Tips' page of the app also utilizes both endpoints. It populates the 'Select Employee' drop down with a GET request to /employees. This returns all employees in the database.  
-
-'View Tips' also makes a GET request to /tips. This request returns all of the tip objects in an array, which is then filtered by selecting starting and ending dates and an employee's name. The filtered array is then displayed in a table created using React Table.  
-
 
 ### Screenshots
 

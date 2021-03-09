@@ -137,13 +137,7 @@ class BarbackTips extends Component {
                         <button onClick={this.handleAddBarback}>Add Barback</button>
                     </section>
                     
-                </div>
-        
-                {/* <div className="btns">
-                    <button>Next</button>
-                    <button>Skip</button>    
-                </div> */}
-                
+                </div>                
             </div>
         )
     }

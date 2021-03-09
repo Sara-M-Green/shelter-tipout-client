@@ -172,6 +172,9 @@ class CalculatorForm extends Component {
             <div>
                 <h1 className="calc-h1">Tip Out Calculator</h1>
                 <h2 className="date">{this.state.currentDateTime}</h2>
+                <p>Follow instructions for each department.</p>
+                <p>Sales are pulled from POS system at the end of the night. </p>
+                <p className="margin-bottom">See README.md for an example.</p>
                 <form onSubmit={this.handleSubmit}>
                     <TotalCcTips
                         totalCcTips={this.state.totalCcTips}

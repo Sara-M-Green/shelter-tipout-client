@@ -166,7 +166,7 @@ class BusserTips extends Component {
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
                 <div className="instructions-p">
-                    <p >Enter Total Sales During Busser Time Frame</p> 
+                    <p>Enter Total Sales During Busser Time Frame</p> 
                     <p>Select the Busser's name, and enter how many hours they worked</p>
                 </div>
                 
