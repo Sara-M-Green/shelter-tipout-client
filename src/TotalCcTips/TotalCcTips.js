@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './TotalCcTips.css'
 
-
+//input component for total cc tips
 class TotalCcTips extends Component {
 
     render() {
@@ -22,7 +22,6 @@ class TotalCcTips extends Component {
                     value={this.props.totalCcTips}
                     onChange={(event) => this.props.onUpdateState(event.target.value, "totalCcTips")} 
                 />
-                {/* <button>Next</button> */}
             </div>
         )
     }

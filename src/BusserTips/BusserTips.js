@@ -22,8 +22,9 @@ class BusserTips extends Component {
         }
     }
 
+    //gets all employee names who work as bussers
     componentDidMount() {
-        fetch('https://young-crag-90287.herokuapp.com/api/employees/3', {
+        fetch(`https://young-crag-90287.herokuapp.com/api/employees/3`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
@@ -46,6 +47,7 @@ class BusserTips extends Component {
         });
     }
 
+    //these functions do the math to calculate tips for the bussers
     updateTotalTips = (event) => {
         let newTotalTips = Number(event.target.value)
         this.setState({
@@ -146,21 +148,20 @@ class BusserTips extends Component {
         this.props.onUpdateState(totalTips, "tips")
     } 
     
+
+    //dynamically adds another busser instance
     handleAddBusser = (event) => {
         event.preventDefault()
         const newBusser = createNewBusser()
 
         const newBussersArray = [...this.state.bussers, newBusser]
 
-
         this.setState({
             bussers: newBussersArray
         })
-        
     }
 
-    render() {
-        
+    render() {     
         return (
             <div className="busser-tips">
                 <h2>Busser Tips</h2>
@@ -234,11 +235,6 @@ class BusserTips extends Component {
                         <button onClick={this.handleAddBusser}>Add Busser</button>
                     </section>
                 </div>
-                
-                {/* <div className="btns">
-                    <button>Next</button>
-                    <button>Skip</button>
-                </div> */}
             </div>
         )
     }

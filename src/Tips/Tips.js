@@ -1,10 +1,7 @@
 import React from 'react'
 import Select from 'react-select'
 import FohTipTable from '../FohTipTable/FohTipTable'
-// import BohTipTable from '../BohTipTable/BohTipTable'
-
 import './Tips.css'
-// import config from '../config'
 
 class Tips extends React.Component {
     constructor(props) {
@@ -20,8 +17,9 @@ class Tips extends React.Component {
         }
     }
 
+    //gets all tips and all employees
     componentDidMount() {
-        Promise.all([fetch('https://young-crag-90287.herokuapp.com/api/tips', {
+        Promise.all([fetch(`https://young-crag-90287.herokuapp.com/api/tips`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
@@ -56,8 +54,6 @@ class Tips extends React.Component {
         .catch(err => {
             console.log('Handling the error here.', err);
         });
-
-
     }
 
     formatDate = (date) => {
@@ -67,6 +63,8 @@ class Tips extends React.Component {
         const newDate = year + month + day
         return newDate
     }
+
+    //these functions filter tips array for selected employee and date range
 
     onEmployeeSelect = (name) => {
         this.setState({
@@ -87,7 +85,6 @@ class Tips extends React.Component {
             endDate: parseInt(dateAsNum)
         })
     }
-
 
     render() {
         const names = this.state.employees.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
@@ -112,7 +109,6 @@ class Tips extends React.Component {
                             id="end-date" 
                             onChange={(event) => this.onEndDateSelect(event.target.value)}
                         />
-
                         
                         <div className="react-select-container">
                         <label htmlFor={"employee" + this.state.employees.emp_id} className="input date-range">Select Employee: </label>

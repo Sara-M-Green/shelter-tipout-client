@@ -27,6 +27,9 @@ class CalculatorForm extends Component {
         }
     }
 
+    // Creates appropriately formatted objects for each employee with tips
+    // sends each employee tip object in a POST request
+    // redirects home
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -68,6 +71,7 @@ class CalculatorForm extends Component {
     }
 
 
+    //These functions do the math calculations to find remaining bartender tips
 
     addAllTips = () => {
         const busserTipsArray = this.state.bussers.map(b => b.tips)
@@ -97,6 +101,8 @@ class CalculatorForm extends Component {
             tipsRemaining: tips
         })
     }
+
+    // These functions update state with selected employee/tips and accumulates total tipout calculation
 
     updateState = (value, propName) => {
         this.setState({

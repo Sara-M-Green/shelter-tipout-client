@@ -11,13 +11,13 @@ class Bussers extends Component {
     }
 
     render() {
+        //creates appropriate array for react-select
         const names = this.props.selectOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
      
         return (
             <li>
                 <div>
                     <label htmlFor={"busserName" + this.props.id} className="input">Busser Name: </label>
-                    {/* <Select  /> */}
                     
                     <Select 
                         className="select-options" 

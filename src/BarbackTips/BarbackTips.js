@@ -19,7 +19,8 @@ class BarbackTips extends Component {
     }
 
     componentDidMount() {
-        fetch('https://young-crag-90287.herokuapp.com/api/employees/4', {
+        //gets all employees who work as barbacks
+        fetch(`https://young-crag-90287.herokuapp.com/api/employees/4`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
@@ -79,7 +80,7 @@ class BarbackTips extends Component {
         })
     }
 
-
+    //these function do the math to calculate barback tips from 1.5% of total sales
     calculateBarbackTips = (barback, sales) => {
         const barbackSales = this.state.barbacks.map(b => {
             if (b === barback) {

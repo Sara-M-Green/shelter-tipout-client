@@ -24,8 +24,6 @@ class Bartender extends React.Component {
                         options={names}
                     />
                     
-                   
-
                     <label htmlFor={"bartenderHours" + this.props.id} className="input">Hours: </label>
                     <input 
                         type="number" 

@@ -11,6 +11,7 @@ class PrepTips extends Component {
         }
     }
 
+    //function to calculate 1.5% of cocktail sales for prep tip
     calculatePrepTips = (event) => {
         event.preventDefault()
         let tips = (Number(event.target.value) * 0.015).toFixed(2)
@@ -72,12 +73,6 @@ class PrepTips extends Component {
                         readOnly
                     />    
                 </div>
-        
-                
-                {/* <div className="btns">
-                    <button>Next</button>
-                    <button>Skip</button>    
-                </div> */}
             </div>
         )
     }

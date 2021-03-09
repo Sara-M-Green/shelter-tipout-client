@@ -10,6 +10,7 @@ class Barbacks extends React.Component {
     }
 
     render() {
+        //creates appropriate array for react-select
         const names = this.props.selectOptions.map(emp => ({value: emp.emp_name, label: emp.emp_name}))
 
         return (

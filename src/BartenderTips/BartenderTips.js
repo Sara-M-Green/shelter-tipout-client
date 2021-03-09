@@ -22,7 +22,8 @@ class BartenderTips extends Component {
     }
 
     componentDidMount() {
-        fetch('https://young-crag-90287.herokuapp.com/api/employees/5', {
+        //gets all employee names who work as bartenders
+        fetch(`https://young-crag-90287.herokuapp.com/api/employees/5`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json'
@@ -98,6 +99,7 @@ class BartenderTips extends Component {
         })
     }
 
+    //these functions do the math to calculate and allocate bartender tips
     sumBartenderHrs = (bartender) => {
         const hoursArray = this.state.bartenders.map(b =>
             b.hours
@@ -136,8 +138,7 @@ class BartenderTips extends Component {
         })
     }
 
-    
-
+    //dynamically adds bartender instance
     handleAddBartender = (event) => {
         event.preventDefault()
         const newBartender = createNewBartender()
@@ -221,10 +222,6 @@ class BartenderTips extends Component {
                     </section>
                     
                 </div>
-                {/* <div className="btns">
-                    <button>Next</button>
-                    <button>Skip</button>    
-                </div> */}
             </div>
         )
     }

@@ -11,6 +11,8 @@ class BohTips extends Component {
         }
     }
 
+    //math function to calculate 3% of food sales for kitchen tips
+
     calculateBohTips = (event) => {
         event.preventDefault()
         const tips = (Number(event.target.value) * 0.03).toFixed(2)
@@ -72,12 +74,6 @@ class BohTips extends Component {
                         readOnly 
                     />    
                 </div>
-        
-                {/* <div className="btns">
-                    <button>Next</button>
-                    <button>Skip</button>    
-                </div> */}
-                
             </div>
         )
     }

@@ -5,7 +5,7 @@
 https://shelter-tip-out-client.vercel.app/
 
 ## Summary
-Turbo Tips was built to solve a problem regarding tip out calculations at Shelter Distilling. Shelter Distilling bartenders pool all of the tips collected daily, then distribute tips out to employees in other departments based on sales. These sales numbers are pulled from our POS device. After tipping out the neccesary departments, the remaining tips are divided between the bartenders on an hourly scale.  
+Turbo Tips was built to solve a problem regarding tip out calculations at Shelter Distilling. Shelter Distilling bartenders pool all the tips collected daily, then distribute tips out to employees in other departments based on sales. These sales numbers are pulled from our POS device. After tipping out the necessary departments, the remaining tips are divided between the bartenders on an hourly scale.  
 
 Each evening, the closing bartender is responsible for filling out a tip form, manually doing math to calculate the correct tip amounts. This tip form is put into a binder, and at the end of the pay period, the manager manually calculates an accumulated tip total for each employee to submit to payroll.   
 
@@ -30,7 +30,7 @@ Bartenders Worked:
 
 ### API Documentation
 
-Turbo Tips Api solicites two endpoints:
+Turbo Tips API solicits two endpoints:
 /employees & /tips.  
 
 The 'Tip Calculator' page makes use of both endpoints.   
