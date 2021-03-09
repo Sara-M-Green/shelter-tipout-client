@@ -10,6 +10,7 @@
 
 #nav li {
     float: right;
+
 }
 
 #nav li:first-child {
@@ -18,9 +19,9 @@
 
 #nav li:nth-child(2) {
     float: left;
-    margin-top: 25px;
+    margin-top: 35px;
     margin-left: 5px;
-    font-size: 28px;
+    font-size: 18px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -32,16 +33,27 @@
 
 #nav li a {
     display: block;
-    padding: 25px 15px;
+    padding: 35px 15px;
     text-decoration: none;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: black;
     /* text-shadow: 1px 1px 1px rgb(26, 26, 37); */
 
-    font-size: 28px;
+    font-size: 18px;
     border-right: 1px solid #ccc; 
 }
 
 #nav li a:hover {
     text-shadow: 1px 1px 1px rgb(26, 26, 37);
+}
+
+@media all and (min-width: 600px) {
+    #nav li a {
+        font-size: 28px;
+        padding: 25px 15px;
+    }   
+    #nav li:nth-child(2) {
+        font-size: 28px;
+        margin-top: 25px;
+    }     
 }

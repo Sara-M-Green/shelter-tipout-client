@@ -1,5 +1,5 @@
 .homepage-heading {
-    font-size: 50px;
+    font-size: 40px;
     text-shadow: 3px 3px 3px lavender;
 }
 
@@ -23,4 +23,10 @@
     letter-spacing: 1px;
     transition: all 0.4s ease 0s;
     box-shadow: 1px 1px 2px rgb(26, 26, 37)
+}
+
+@media all and (min-width: 600px) {
+    .homepage-heading {
+        font-size: 50px;
+    }
 }

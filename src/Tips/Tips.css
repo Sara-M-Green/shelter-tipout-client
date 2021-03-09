@@ -12,10 +12,15 @@ table {
 
 .date-range {
     font-family: 'Dancing Script';
-    font-size: 33px;
+    font-size: 28px;
 }
 
 #table-header {
     margin-bottom: 3px;
 }
 
+@media all and (min-width: 600px) {
+    .date-range {
+        font-size: 33px;
+    }
+}
