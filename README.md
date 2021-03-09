@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Turbo Tips
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Live Link
 
-In the project directory, you can run:
+https://shelter-tip-out-client.vercel.app/
 
-### `npm start`
+## Summary
+Turbo Tips was built to solve a problem regarding tip out calculations at Shelter Distilling. Shelter Distilling bartenders pool all of the tips collected daily, then distribute tips out to employees in other departments based on sales. These sales numbers are pulled from our POS device. After tipping out the neccesary departments, the remaining tips are divided between the bartenders on an hourly scale.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each evening, the closing bartender is responsible for filling out a tip form, manually doing math to calculate the correct tip amounts. This tip form is put into a binder, and at the end of the pay period, the manager manually calculates an accumulated tip total for each employee to submit to payroll. 
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Turbo Tips eliminates the manual math calculations which are often accompanied with errors. It also calculates an accumulated tip total for each employee in a specified date range which saves management time, and again, rids the potential for human error.
 
-### `npm test`
+### Example
+Total CC Tips: $739.88
+Total Food Sales: $1042.00
+Total Cocktail Sales: $2065.05
+Total Sales During Busser Shift: $3903.14
+    Bussers Worked: Fernanda G - 7hrs
+                    Jesus - 5hrs
+Total Sales During Busser Shift: $3326.50
+    Barback Worked: Maddy
+    Bottles Sold: 2
+Bartenders Worked: 
+    Steph - 6hrs
+    Sara - 7.5hrs
+    Cam - 5.5hrs
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### API Documentation
 
-### `npm run build`
+Turbo Tips Api solicites two endpoints:
+/employees & /tips.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The 'Tip Calculator' page makes use of both endpoints. 
+For each department with more than one employee, a GET request is made to the /employees/:dept_id endpoint. This request retrieves all employees from a specific department, and populates those employee names in the respective drop down menu.
+The 'Tip Calculator' sends a post request to /tips which contains a json object for each employee receiving tips in the format of tip_date, emp_id, bottles sold, and tips earned.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The 'View Tips' page of the app also utilizes both endpoints. It populates the 'Select Employee' drop down with a GET request to /employees. This returns all employees in the database.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+'View Tips' also makes a GET request to /tips. This request returns all of the tip objects in an array, which is then filtered by selecting starting and ending dates and an employee's name. The filtered array is then displayed in a table created using React Table.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Screenshots
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
