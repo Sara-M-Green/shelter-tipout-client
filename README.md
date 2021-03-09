@@ -2,7 +2,7 @@
 
 ## Live Link
 
-https://shelter-tip-out-client.vercel.app/
+https://turbotips.vercel.app/
 
 ## Summary
 Turbo Tips was built to solve a problem regarding tip out calculations at Shelter Distilling. Shelter Distilling bartenders pool all the tips collected daily, then distribute tips out to employees in other departments based on sales. These sales numbers are pulled from our POS device. After tipping out the necessary departments, the remaining tips are divided between the bartenders on an hourly scale.  
