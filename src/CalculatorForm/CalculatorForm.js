@@ -205,7 +205,7 @@ class CalculatorForm extends Component {
                         onAddTips={this.addAllTips}
                         onUpdateArray={this.updateBartendersArray}
                     />
-                    <input type="submit" />
+                    <input type="submit" value="Submit" />
                 </form>
             </div>
         )
