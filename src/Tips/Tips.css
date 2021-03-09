@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
 table {
     margin: auto;
     margin-top: 5px;
@@ -8,6 +10,12 @@ table {
     margin: 20px auto;
 }
 
+.date-range {
+    font-family: 'Dancing Script';
+    font-size: 33px;
+}
+
 #table-header {
     margin-bottom: 3px;
 }
+

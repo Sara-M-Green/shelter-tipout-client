@@ -9,7 +9,7 @@ function FohTipTable(props) {
     const year = int.toString().slice(0, 4)
     const month = int.toString().slice(4, 6)
     const day = int.toString().slice(6)
-    return month + "-" + day + "-" + year
+    return month + "/" + day + "/" + year
   }
 
   const filterArray = (arr) => {

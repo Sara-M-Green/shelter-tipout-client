@@ -1,0 +1,26 @@
+.homepage-heading {
+    font-size: 50px;
+    text-shadow: 3px 3px 3px lavender;
+}
+
+.link {
+    text-decoration: none;
+}
+
+.homepage-btn {
+    border-radius: 4px;
+    background: lavender;
+    border: 2px solid black;
+    color: black;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 18px;
+    transition: all 0.5s;
+    padding: 10px;
+}
+
+.homepage-btn:hover {
+    letter-spacing: 1px;
+    transition: all 0.4s ease 0s;
+    box-shadow: 1px 1px 2px rgb(26, 26, 37)
+}

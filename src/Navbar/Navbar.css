@@ -1,10 +1,11 @@
 #nav {
     width: 100%;
-    float: left;
+    height: 65px;
     margin: 0 0 3em 0;
     padding: 0;
     list-style: none;
     background-color: lightgray;
+    border-bottom: 2px solid black;
 }
 
 #nav li {
@@ -17,10 +18,9 @@
 
 #nav li:nth-child(2) {
     float: left;
-    margin-top: 18px;
+    margin-top: 25px;
     margin-left: 5px;
-    font-size: 1.5em;
-    /* font-weight: bold; */
+    font-size: 28px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
@@ -32,10 +32,16 @@
 
 #nav li a {
     display: block;
-    padding: 15px 15px;
+    padding: 25px 15px;
     text-decoration: none;
-    font-weight: bold;
-    color: #069;
-    font-size: 1.5em;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+    /* text-shadow: 1px 1px 1px rgb(26, 26, 37); */
+
+    font-size: 28px;
     border-right: 1px solid #ccc; 
+}
+
+#nav li a:hover {
+    text-shadow: 1px 1px 1px rgb(26, 26, 37);
 }

@@ -17,6 +17,7 @@ class Bartender extends React.Component {
                 <div>
                     <label htmlFor={"bartenderName" + this.props.id} className="input">Bartender Name: </label>
                     <Select
+                        className="select-options"  
                         name={"bartenderName" + this.props.id}
                         id={"bartenderName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.bartender, event.value)}

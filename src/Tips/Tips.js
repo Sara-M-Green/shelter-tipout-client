@@ -95,7 +95,7 @@ class Tips extends React.Component {
             <div>
                 
                 <section>
-                    <h2>Select Date Range</h2>
+                    <h2 className="date-range">Select Date Range</h2>
                     <form>
                         <label htmlFor="start-date">Start Date</label>
                         <input 
@@ -115,8 +115,9 @@ class Tips extends React.Component {
 
                         
                         <div className="react-select-container">
-                        <label htmlFor={"employee" + this.state.employees.emp_id} className="input">Select Employee: </label>
-                            <Select 
+                        <label htmlFor={"employee" + this.state.employees.emp_id} className="input date-range">Select Employee: </label>
+                            <Select
+                                className="select-options" 
                                 name={"employee" + this.state.employees.emp_id}
                                 id={"employee" + this.state.employees.emp_id}
                                 onChange={(event) => this.onEmployeeSelect(event.value)}

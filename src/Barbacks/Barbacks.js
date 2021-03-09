@@ -17,6 +17,7 @@ class Barbacks extends React.Component {
                 <div>
                     <label htmlFor="name" className="input">Barback Name: </label>
                     <Select
+                        className="select-options"
                         name="name" 
                         id="barback-name"
                         options={names}

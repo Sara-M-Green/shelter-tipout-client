@@ -20,6 +20,7 @@ class Bussers extends Component {
                     {/* <Select  /> */}
                     
                     <Select 
+                        className="select-options" 
                         name={"busserName" + this.props.id}
                         onChange={(event) => this.props.onUpdateName(this.props.busser, event.value)}
                         options={names}
