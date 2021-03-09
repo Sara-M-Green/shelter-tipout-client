@@ -16,10 +16,12 @@ Total CC Tips: $739.88
 Total Food Sales: $1042.00  
 Total Cocktail Sales: $2065.05  
 Total Sales During Busser Shift: $3903.14  
-    Bussers Worked: Fernanda G - 7hrs  
-                    Jesus - 5hrs  
-Total Sales During Busser Shift: $3326.50  
-    Barback Worked: Maddy  
+    Bussers Worked:  
+    Fernanda G - 7hrs  
+    Jesus - 5hrs  
+Total Sales During Barback Shift: $3326.50  
+    Barback Worked:  
+    Maddy  
     Bottles Sold: 2  
 Bartenders Worked:  
     Steph - 6hrs  
@@ -41,7 +43,7 @@ The 'View Tips' page of the app also utilizes both endpoints. It populates the '
 
 
 ### Screenshots
-
+![Home Page Screen Shot](./src/images/home-page.png?raw=true "Home Page")
 
 
 
