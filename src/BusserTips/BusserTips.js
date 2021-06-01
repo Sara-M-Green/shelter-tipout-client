@@ -182,7 +182,7 @@ class BusserTips extends Component {
                     />    
                 </div>
                 <div>
-                    <label htmlFor="busser-total-tips">Busser Total Tips (5%): $</label>
+                    <label htmlFor="busser-total-tips">Busser Total Tips (2%): $</label>
                     <input 
                         placeholder="0.00" 
                         type="number" 
